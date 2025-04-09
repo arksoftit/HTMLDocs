@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Clientes</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0; /* Color gris claro para el fondo general */
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff; /* El contenedor principal sigue siendo blanco */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Banner corporativo */
+        .banner {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .banner img {
+            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+            height: auto; /* Mantiene la proporción original */
+            transform: scale(1, 0.8); /* Reduce la altura en un 20% */
+            transform-origin: top; /* Ajusta el origen de la transformación al tope */
+        }
+        h1 {
+            text-align: center;
+            color: #005883;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box; /* Asegura que el padding y borde no afecten el ancho */
+        }
+        /* Cambiar color de fondo del campo "Empresa Solicitante" */
+        #empresa_solicitante {
+            background-color: #f0f0f0; /* Gris clarito */
+        }
+        button {
+            padding: 10px;
+            background-color: #005883;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #003d5c;
+        }
+
+        /* Pie de página */
+        .footer {
+            margin-top: 20px;
+            padding: 15px 0;
+            background-color: #f4f4f4;
+            font-size: 12px;
+            color: #999999;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos para la vista previa de impresión */
+        @media print {
+            .no-print {
+                display: none; /* Ocultar elementos que no deben imprimirse */
+            }
+            .print-only {
+                display: block; /* Mostrar elementos que solo deben aparecer en la impresión */
+            }
+            .pdf-container {
+                page-break-before: always; /* Forzar nueva página para el PDF */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Banner corporativo -->
+        <div class="banner">
+            <img src="https://i.imgur.com/Ie4MRYa.png" alt="Banner Corporativo">
+        </div>
+
+        <!-- Título del formulario -->
+        <h1>Registro de Clientes</h1>
+
+        <!-- Formulario de registro -->
+        <form name="Registro de Clientes" action="#" method="post">
+            <!-- Información básica -->
+            <label for="empresa_solicitante">Empresa Solicitante/Cliente:</label>
+            <input type="text" id="empresa_solicitante" name="empresa_solicitante" placeholder="Ingrese el nombre de la empresa" required>
+
+            <!-- Contenedor para No. R.I.F. y Tipo de Contribuyente -->
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <div style="flex: 1;">
+                    <label for="No. R.I.F.">No. R.I.F.:</label>
+                    <input type="text" id="No. R.I.F." name="No. R.I.F." placeholder="Ingrese el No. R.I.F. J0123456789 o V0123456789" required style="width: 95%;">
+                </div>
+                <div style="flex: 1;">
+                    <label for="tipo_contribuyente">Tipo de Contribuyente:</label>
+                    <select id="tipo_contribuyente" name="tipo_contribuyente" required style="width: 95%;">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option>Ordinario</option>
+                        <option>Especial</option>
+                        <option>No Contribuyente</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Contenedor para Fecha de Constitución y Zona/Estado -->
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <div style="flex: 1;">
+                    <label for="fecha_constitucion">Fecha de Constitución:</label>
+                    <input type="date" id="fecha_constitucion" name="fecha_constitucion" required style="width: 95%;">
+                </div>
+                <div style="flex: 1;">
+                    <label for="zona">Zona/Estado:</label>
+                    <select id="zona" name="zona" required style="width: 95%;">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option>Amazonas</option>
+                        <option>Anzoátegui</option>
+                        <option>Apure</option>
+                        <option>Aragua</option>
+                        <option>Barinas</option>
+                        <option>Bolívar</option>
+                        <option>Carabobo</option>
+                        <option>Cojedes</option>
+                        <option>Delta Amacuro</option>
+                        <option>Distrito Capital</option>
+                        <option>Falcón</option>
+                        <option>Guárico</option>
+                        <option>Lara</option>
+                        <option>Mérida</option>
+                        <option>Miranda</option>
+                        <option>Monagas</option>
+                        <option>Nueva Esparta</option>
+                        <option>Portuguesa</option>
+                        <option>Sucre</option>
+                        <option>Táchira</option>
+                        <option>Trujillo</option>
+                        <option>Vargas</option>
+                        <option>Yaracuy</option>
+                        <option>Zulia</option>
+                        <option>Dependencias Federales</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Botón para cargar el PDF -->
+            <label for="pdf-file" class="no-print">Anexar PDF (opcional):</label>
+            <input type="file" id="pdf-file" accept="application/pdf" class="no-print">
+
+            <!-- Botón para abrir la vista previa de impresión -->
+            <button type="button" id="imprimir-btn" class="no-print">Generar Planilla</button>
+
+            <!-- Pie de página del formulario -->
+            <div class="footer no-print">
+                &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
+                Para más información, contáctenos en: 
+                <a href="mailto:arksoft.hybrid@outlook.com">arksoft.hybrid@gmail.com</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Agregar evento al botón de impresión
+        document.getElementById("imprimir-btn").addEventListener("click", function () {
+            // Obtener valores del formulario
+            const empresa = document.getElementById("empresa_solicitante").value;
+            const rif = document.getElementById("No. R.I.F.").value;
+            const tipoContribuyente = document.getElementById("tipo_contribuyente").value;
+            const fechaInput = document.getElementById("fecha_constitucion").value;
+            const zona = document.getElementById("zona").value;
+
+            // Formatear la fecha como dd/MM/aaaa
+            const fechaFormateada = new Date(fechaInput).toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+
+            // Crear el contenido HTML para la nueva ventana
+            let contenidoDocumento = `
+                <!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Registro de Clientes</title>
+                    <style>
+                        /* Estilos para la vista previa de impresión */
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #fff;
+                            margin: 0;
+                            padding: 20px;
+                            line-height: 1.4;
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+                        th, td {
+                            border: 1px solid #ddd;
+                            padding: 10px;
+                            text-align: left;
+                            font-size: 12px;
+                        }
+                        th {
+                            background-color: #005883;
+                            color: white;
+                        }
+                        .pdf-container {
+                            page-break-before: always;
+                        }
+                        @media print {
+                            .no-print {
+                                display: none;
+                            }
+                            .pdf-container {
+                                display: block;
+                            }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>Registro de Clientes</h1>
+                    <table>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Datos</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Empresa Solicitante:</strong></td>
+                            <td>${empresa}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>No. R.I.F.:</strong></td>
+                            <td>${rif}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo de Contribuyente:</strong></td>
+                            <td>${tipoContribuyente}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fecha de Constitución:</strong></td>
+                            <td>${fechaFormateada}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Zona/Estado:</strong></td>
+                            <td>${zona}</td>
+                        </tr>
+                    </table>
+            `;
+
+            // Verificar si se cargó un archivo PDF
+            const pdfFile = document.getElementById("pdf-file").files[0];
+            if (pdfFile) {
+                const pdfUrl = URL.createObjectURL(pdfFile);
+                contenidoDocumento += `
+                    <div class="pdf-container">
+                        <h2>Anexo: ${pdfFile.name}</h2>
+                        <embed src="${pdfUrl}" type="application/pdf" width="100%" height="600px">
+                    </div>
+                `;
+            }
+
+            contenidoDocumento += `
+                </body>
+                </html>
+            `;
+
+            // Abrir una nueva ventana y escribir el contenido
+            const ventana = window.open('', '_blank');
+            ventana.document.write(contenidoDocumento);
+            ventana.document.close();
+        });
+    </script>
+</body>
+</html>

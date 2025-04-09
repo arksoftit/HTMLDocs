@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ACUERDO DE RESPONSABILIDADES Y USO DEL SOFTWARE</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Banner corporativo */
+        .banner {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #005883;
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #333333;
+        }
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px;
+            background-color: #005883;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #003d5c;
+        }
+        @media (max-width: 768px) {
+            form, table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <!-- Banner corporativo -->
+        <div class="banner">
+            <img src="https://i.imgur.com/Ie4MRYa.png" alt="Banner Corporativo">
+        </div>
+
+        <!-- Título del formulario -->
+        <h1>ACUERDO DE RESPONSABILIDADES Y USO DEL SOFTWARE</h1>
+
+        <!-- Información del Proveedor de Software -->
+        <div class="empresa-info">
+            <p><strong>PROVEEDOR DE SOFTWARE:</strong> ARKSOFT INTEGRADORES DE SISTEMAS, C.A.</p>
+            <p><strong>RIF:</strong> J310994692</p>
+            <p><strong>Representante Legal:</strong> JUAN ERNESTO PAEZ MUJICA</p>
+            <p><strong>Cédula de Identidad:</strong> V5452715</p>
+            <p><strong>Domicilio Fiscal:</strong> Caracas</p>
+        </div>
+
+        <!-- Formulario de registro -->
+        <form id="cliente-form" action="#" method="post">
+            <!-- Ciudad y Fecha -->
+            <div>
+                <label for="ciudad">Ciudad:</label>
+                <input type="text" id="ciudad" name="ciudad" placeholder="Ejemplo: Caracas" required>
+            </div>
+            <div>
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha" required>
+            </div>
+
+            <!-- Datos del cliente -->
+            <div>
+                <label for="cliente_nombre">Nombre del Cliente:</label>
+                <input type="text" id="cliente_nombre" name="cliente_nombre" placeholder="Nombre completo del cliente" required>
+            </div>
+            <div>
+                <label for="cliente_rif">RIF del Cliente:</label>
+                <input type="text" id="cliente_rif" name="cliente_rif" placeholder="Ejemplo: J123456789" required>
+            </div>
+            <div>
+                <label for="cliente_representante">Representante Legal:</label>
+                <input type="text" id="cliente_representante" name="cliente_representante" placeholder="Nombre completo del representante" required>
+            </div>
+            <div>
+                <label for="cliente_cedula">Cédula del Representante:</label>
+                <input type="text" id="cliente_cedula" name="cliente_cedula" placeholder="Ejemplo: V1234567" required>
+            </div>
+            <div>
+                <label for="cliente_cargo">Cargo del Representante:</label>
+                <input type="text" id="cliente_cargo" name="cliente_cargo" placeholder="Ejemplo: Gerente General" required>
+            </div>
+            <div>
+                <label for="cliente_domicilio">Domicilio Fiscal:</label>
+                <textarea id="cliente_domicilio" name="cliente_domicilio" rows="2" placeholder="Dirección completa del cliente" required></textarea>
+            </div>
+
+            <!-- Botón de envío -->
+            <button type="submit" class="button">Generar Acuerdo</button>
+        </form>
+    </div>
+</body>
+</html>

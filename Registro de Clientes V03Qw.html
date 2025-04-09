@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Clientes</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Banner corporativo */
+        .banner {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .banner img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+        h1 {
+            text-align: center;
+            color: #005883;
+            margin-bottom: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px;
+            background-color: #005883;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #003d5c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table td, table th {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        table th {
+            background-color: #005883;
+            color: white;
+        }
+        @media (max-width: 768px) {
+            table, form {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Banner corporativo -->
+        <div class="banner">
+            <img src="https://i.imgur.com/Ie4MRYa.png" alt="Banner Corporativo">
+        </div>
+
+        <!-- Título del formulario -->
+        <h1>Registro de Clientes</h1>
+
+        <!-- Formulario de registro -->
+        <form name="Registro de Clientes" action="#" method="post">
+            <!-- Información básica -->
+            <label for="empresa_solicitante">Empresa Solicitante/Cliente:</label>
+            <input type="text" id="empresa_solicitante" name="empresa_solicitante" placeholder="Ingrese el nombre de la empresa" required>
+
+            <!-- Contenedor para No. R.I.F. y Tipo de Contribuyente -->
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <div style="flex: 1;">
+                    <label for="No. R.I.F.">No. R.I.F.:</label>
+                    <input type="text" id="No. R.I.F." name="No. R.I.F." placeholder="Ingrese el No. R.I.F. J0123456789 o V0123456789" required style="width: 95%;">
+                </div>
+                <div style="flex: 1;">
+                    <label for="tipo_contribuyente">Tipo de Contribuyente:</label>
+                    <select id="tipo_contribuyente" name="tipo_contribuyente" required style="width: 95%;">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option>Ordinario</option>
+                        <option>Especial</option>
+                        <option>No Contribuyente</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Contenedor para Fecha de Constitución y Zona/Estado -->
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <div style="flex: 1;">
+                    <label for="fecha_constitucion">Fecha de Constitución:</label>
+                    <input type="date" id="fecha_constitucion" name="fecha_constitucion" required style="width: 95%;">
+                </div>
+                <div style="flex: 1;">
+                    <label for="zona">Zona/Estado:</label>
+                    <select id="zona" name="zona" required style="width: 95%;">
+                        <option value="" disabled selected>Seleccione una opción</option>
+                        <option>Amazonas</option>
+                        <option>Anzoátegui</option>
+                        <option>Apure</option>
+                        <option>Aragua</option>
+                        <option>Barinas</option>
+                        <option>Bolívar</option>
+                        <option>Carabobo</option>
+                        <option>Cojedes</option>
+                        <option>Delta Amacuro</option>
+                        <option>Distrito Capital</option>
+                        <option>Falcón</option>
+                        <option>Guárico</option>
+                        <option>Lara</option>
+                        <option>Mérida</option>
+                        <option>Miranda</option>
+                        <option>Monagas</option>
+                        <option>Nueva Esparta</option>
+                        <option>Portuguesa</option>
+                        <option>Sucre</option>
+                        <option>Táchira</option>
+                        <option>Trujillo</option>
+                        <option>Vargas</option>
+                        <option>Yaracuy</option>
+                        <option>Zulia</option>
+                        <option>Dependencias Federales</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Contenedor para Dirección Fiscal y Dirección de Atención -->
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <div style="flex: 1;">
+                    <label for="direccion_fiscal">Dirección Fiscal:</label>
+                    <textarea id="direccion_fiscal" name="direccion_fiscal" rows="3" placeholder="Ingrese la dirección fiscal" style="width: 95%;"></textarea>
+                </div>
+                <div style="flex: 1;">
+                    <label for="direccion_atencion">Dirección de Atención:</label>
+                    <textarea id="direccion_atencion" name="direccion_atencion" rows="3" placeholder="Ingrese la dirección de atención" style="width: 95%;"></textarea>
+                </div>
+            </div>
+
+            <!-- Contenedor para Representante Legal y Correo Electrónico -->
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <div style="flex: 1;">
+                    <label for="representante_legal">Representante Legal:</label>
+                    <input type="text" id="representante_legal" name="representante_legal" placeholder="Nombre completo del representante legal" required style="width: 95%;">
+                </div>
+                <div style="flex: 1;">
+                    <label for="correo_electronico">Correo electrónico:</label>
+                    <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Ejemplo: ejemplo@dominio.com" required style="width: 95%;">
+                </div>
+            </div>
+
+            <!-- Contenedor para Teléfono Cliente y Móvil Cliente -->
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <div style="flex: 1;">
+                    <label for="telefono_cliente">Teléfono Cliente:</label>
+                    <input type="text" id="telefono_cliente" name="telefono_cliente" placeholder="Ejemplo: (0212) 123-4567" required style="width: 95%;">
+                </div>
+                <div style="flex: 1;">
+                    <label for="movil_cliente">Móvil Cliente:</label>
+                    <input type="text" id="movil_cliente" name="movil_cliente" placeholder="Ejemplo: 0412-1234567" required style="width: 95%;">
+                </div>
+            </div>
+
+            <!-- Contenedor para Persona Contacto y Teléfono Contacto -->
+            <div style="display: flex; gap: 10px; margin-top: 10px;">
+                <div style="flex: 1;">
+                    <label for="persona_contacto">Persona Contacto:</label>
+                    <input type="text" id="persona_contacto" name="persona_contacto" placeholder="Nombre completo de la persona contacto" required style="width: 95%;">
+                </div>
+                <div style="flex: 1;">
+                    <label for="telefono_contacto">Teléfono Contacto:</label>
+                    <input type="text" id="telefono_contacto" name="telefono_contacto" placeholder="Ejemplo: (0212) 123-4567" required style="width: 95%;">
+                </div>
+            </div>
+
+            <!-- Botón de envío -->
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
