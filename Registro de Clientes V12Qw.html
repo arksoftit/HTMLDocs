@@ -204,7 +204,7 @@
         <h1>Registro de Clientes</h1>      
         
         <!-- Formulario de registro -->
-        <form name="Registro de Clientes" action="#" method="post">
+        <form id="registro-form" name="Registro de Clientes" action="#" method="post">
             <!-- Información básica -->
             <label for="empresa_solicitante">Empresa Solicitante/Cliente:</label>
             <input type="text" id="empresa_solicitante" name="empresa_solicitante" placeholder="Ingrese el nombre de la empresa" required>
@@ -316,50 +316,82 @@
             <label for="Actividad_Economica">Actividad Económica:</label>
             <input type="text" id="Actividad_Economica" name="Actividad_Economica" placeholder="Describa la Actividad Económica de la Empresa" required>
 
-            <!-- Botón para cargar el PDF -->
-            <label for="pdf-file" class="no-print">Anexar PDF (opcional):</label>
-            <input type="file" id="pdf-file" accept="application/pdf" class="no-print">
-
-            <!-- Botón para abrir la vista previa de impresión -->
-            <button type="button" id="imprimir-btn" class="no-print">Generar Planilla</button>
-
-            <!-- Pie de página del formulario -->
-            <div class="footer no-print">
-                &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
-                Para más información, contáctenos en: 
-                <a href="mailto:arksoft.hybrid@outlook.com">arksoft.hybrid@gmail.com</a>
-            </div>
-        </form>
-    </div>
-
-    <script>
-        // Agregar evento al botón de impresión
-        document.getElementById("imprimir-btn").addEventListener("click", function () {
-            // Obtener valores del formulario
-            const empresa = document.getElementById("empresa_solicitante").value;
-            const rif = document.getElementById("No. R.I.F.").value;
-            const tipoContribuyente = document.getElementById("tipo_contribuyente").value;
-            const fechaInput = document.getElementById("fecha_constitucion").value;
-            const zona = document.getElementById("zona").value;
-            const direccionFiscal = document.getElementById("direccion_fiscal").value;
-            const direccionAtencion = document.getElementById("direccion_atencion").value;
-            const representanteLegal = document.getElementById("representante_legal").value;
-            const correoElectronico = document.getElementById("correo_electronico").value;
-            const telefonoCliente = document.getElementById("telefono_cliente").value;
-            const movilCliente = document.getElementById("movil_cliente").value;
-            const personaContacto = document.getElementById("persona_contacto").value;
-            const telefonoContacto = document.getElementById("telefono_contacto").value;
-            const actividadEconomica = document.getElementById("Actividad_Economica").value;
-
-            // Formatear la fecha como dd/MM/aaaa
-            const fechaFormateada = new Date(fechaInput).toLocaleDateString('es-ES', {
-                day: '2-digit',
-                month: '2-digit',
-                year: 'numeric'
-            });
-
-            // Crear el contenido HTML para la nueva ventana
-            let contenidoDocumento = `
+             <!-- Botón para cargar el PDF -->
+             <label for="pdf-file" class="no-print">Anexar copia del RIF en PDF (requerido):</label>
+             <input type="file" id="pdf-file" accept="application/pdf" class="no-print" required>
+ 
+             <!-- Botones de acción -->
+             <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+                 <button type="button" id="limpiar-btn" class="clear-button">Limpiar Campos</button>
+                 <button type="button" id="imprimir-btn" class="no-print">Generar Planilla</button>
+             </div>
+ 
+             <!-- Pie de página del formulario -->
+             <div class="footer no-print">
+                 &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
+                 Para más información, contáctenos en: 
+                 <a href="mailto:arksoft.sistemas@gmail.com">arksoft.sistemas@gmail.com</a>
+             </div>
+         </form>
+     </div>
+ 
+     <script>
+         // Función para limpiar los campos del formulario
+         document.getElementById("limpiar-btn").addEventListener("click", function () {
+             if (confirm("¿Está seguro de que desea limpiar todos los campos?")) {
+                 document.getElementById("registro-form").reset();
+             }
+         });
+ 
+         // Función para validar el formulario antes de generar la planilla
+         document.getElementById("imprimir-btn").addEventListener("click", function () {
+             const form = document.getElementById("registro-form");
+             const pdfFile = document.getElementById("pdf-file").files[0];
+ 
+             // Verificar si hay campos vacíos
+             let hasEmptyFields = false;
+             Array.from(form.elements).forEach((element) => {
+                 if (element.required && !element.value) {
+                     hasEmptyFields = true;
+                 }
+             });
+ 
+             if (hasEmptyFields) {
+                 alert("Por favor, complete todos los campos obligatorios.");
+                 return;
+             }
+ 
+             // Verificar si se ha cargado un archivo PDF
+             if (!pdfFile) {
+                 alert("Debe anexar un archivo PDF antes de generar la planilla.");
+                 return;
+             }
+ 
+             // Obtener valores del formulario
+             const empresa = document.getElementById("empresa_solicitante").value;
+             const rif = document.getElementById("No. R.I.F.").value;
+             const tipoContribuyente = document.getElementById("tipo_contribuyente").value;
+             const fechaInput = document.getElementById("fecha_constitucion").value;
+             const zona = document.getElementById("zona").value;
+             const direccionFiscal = document.getElementById("direccion_fiscal").value;
+             const direccionAtencion = document.getElementById("direccion_atencion").value;
+             const representanteLegal = document.getElementById("representante_legal").value;
+             const correoElectronico = document.getElementById("correo_electronico").value;
+             const telefonoCliente = document.getElementById("telefono_cliente").value;
+             const movilCliente = document.getElementById("movil_cliente").value;
+             const personaContacto = document.getElementById("persona_contacto").value;
+             const telefonoContacto = document.getElementById("telefono_contacto").value;
+             const actividadEconomica = document.getElementById("Actividad_Economica").value;
+ 
+             // Formatear la fecha como dd/MM/aaaa
+             const fechaFormateada = new Date(fechaInput).toLocaleDateString('es-ES', {
+                 day: '2-digit',
+                 month: '2-digit',
+                 year: 'numeric'
+             });
+ 
+             // Crear el contenido HTML para la nueva ventana
+             let contenidoDocumento = `
                 <!DOCTYPE html>
                 <html lang="es">
                 <head>
@@ -374,6 +406,23 @@
                             margin: 0;
                             padding: 20px;
                             line-height: 1.4;
+                        }
+                        .print-header {
+                            display: flex; /* Usa Flexbox para centrar */
+                            flex-direction: column; /* Apila elementos verticalmente */
+                            align-items: center; /* Centra horizontalmente */
+                            text-align: center; /* Asegura que el texto esté centrado */
+                            margin-bottom: 20px; /* Espacio debajo de la cabecera */
+                        }
+                        .print-header img {
+                            width: 20%; /* Reduce la imagen al 80% del tamaño original */
+                            height: auto; /* Mantiene la proporción */
+                            margin-bottom: 10px; /* Espacio entre la imagen y el título */
+                        }
+                        .print-header h1 {
+                            font-size: 24px; /* Tamaño del título */
+                            color: #005883; /* Color corporativo */
+                            margin: 0; /* Elimina márgenes adicionales */
                         }
                         table {
                             width: 100%;
@@ -437,9 +486,9 @@
                 <body>
                     <!-- Cabecera de la impresión -->
                     <div class="print-header">
-                        <a href="https://imgur.com/1PGITw8"><img src="https://i.imgur.com/1PGITw8.png" title="source: imgur.com" /></a>
+                        <img src="https://i.imgur.com/1PGITw8.png" alt="Banner Corporativo">
                         <h1>Registro de Clientes</h1>
-                    </div>                    
+                    </div>
                     <table>
                         <tr>
                             <th>Campo</th>
@@ -496,43 +545,41 @@
                         <tr>
                             <td><strong>Teléfono Contacto:</strong></td>
                             <td>${telefonoContacto}</td>
-                         <tr>
+                        </tr>
+                        <tr>
                             <td><strong>Actividad Económica:</strong></td>
                             <td>${actividadEconomica}</td>
                         </tr>
                     </table>
             `;
-
-            // Verificar si se cargó un archivo PDF
-            const pdfFile = document.getElementById("pdf-file").files[0];
-            if (pdfFile) {
-                const pdfUrl = URL.createObjectURL(pdfFile);
-                contenidoDocumento += `
-                    <div class="pdf-container">
-                        <h2>Anexo: ${pdfFile.name}</h2>
-                        <embed src="${pdfUrl}" type="application/pdf" width="100%" height="600px">
-                    </div>
-                `;
-            }
-
-            contenidoDocumento += `
-                <div class="print-footer">
-                    &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
-                    Para más información, contáctenos en: 
-                    <a href="mailto:arksoft.hybrid@outlook.com">arksoft.hybrid@gmail.com</a>
+ 
+             // Agregar el PDF adjunto
+             const pdfUrl = URL.createObjectURL(pdfFile);
+             contenidoDocumento += `
+                <div class="pdf-container">
+                    <h2 style="font-size: 14px; text-align: center; margin-top: 20px; margin-bottom: 10px;">Anexo: ${pdfFile.name}</h2>
+                    <embed src="${pdfUrl}" type="application/pdf" width="100%" height="600px">
                 </div>
-                <div class="print-button">
-                    <button onclick="window.print()">Imprimir Documento</button>
-                </div>
-                </body>
-                </html>
             `;
-
-            // Abrir una nueva ventana y escribir el contenido
-            const ventana = window.open('', '_blank');
-            ventana.document.write(contenidoDocumento);
-            ventana.document.close();
-        });
-    </script>
+ 
+             contenidoDocumento += `
+                 <div class="print-footer">
+                     &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
+                     Para más información, contáctenos en: 
+                     <a href="mailto:arksoft.sistemas@gmail.com">arksoft.sistemas@gmail.com</a>
+                 </div>
+                 <div class="print-button">
+                     <button onclick="window.print()">Imprimir Documento</button>
+                 </div>
+                 </body>
+                 </html>
+             `;
+ 
+             // Abrir una nueva ventana y escribir el contenido
+             const ventana = window.open('', '_blank');
+             ventana.document.write(contenidoDocumento);
+             ventana.document.close();
+         });
+     </script>
 </body>
 </html>
