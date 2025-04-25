@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Clientes</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #005883;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        button {
+            padding: 10px;
+            background-color: #005883;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #003d5c;
+        }
+        .footer {
+            margin-top: 20px;
+            padding: 15px 0;
+            background-color: #f4f4f4;
+            text-align: center;
+            font-size: 12px;
+            color: #999;
+        }
+        .footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Banner corporativo -->
+        <div class="banner">
+            <img src="https://i.imgur.com/Ie4MRYa.png" alt="Banner Corporativo" style="width: 65%; height: auto;">
+        </div>
+        <h1>Registro de Clientes</h1>
+        <form id="formulario-clientes">
+            <!-- Información básica -->
+            <label for="empresa_solicitante">Empresa Solicitante/Cliente:</label>
+            <input type="text" id="empresa_solicitante" name="empresa_solicitante" placeholder="Ingrese el nombre de la empresa" required>
+
+            <label for="rif">No. R.I.F.:</label>
+            <input type="text" id="rif" name="rif" placeholder="Ingrese el No. R.I.F. J0123456789 o V0123456789" required>
+
+            <label for="tipo_contribuyente">Tipo de Contribuyente:</label>
+            <select id="tipo_contribuyente" name="tipo_contribuyente" required>
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option>Ordinario</option>
+                <option>Especial</option>
+                <option>No Contribuyente</option>
+            </select>
+
+            <label for="fecha_constitucion">Fecha de Constitución:</label>
+            <input type="date" id="fecha_constitucion" name="fecha_constitucion" required>
+
+            <label for="zona">Zona/Estado:</label>
+            <select id="zona" name="zona" required>
+                <option value="" disabled selected>Seleccione una opción</option>
+                <option>Amazonas</option>
+                <option>Anzoátegui</option>
+                <option>Apure</option>
+                <option>Aragua</option>
+                <option>Barinas</option>
+                <option>Bolívar</option>
+                <option>Carabobo</option>
+                <option>Cojedes</option>
+                <option>Delta Amacuro</option>
+                <option>Distrito Capital</option>
+                <option>Falcón</option>
+                <option>Guárico</option>
+                <option>Lara</option>
+                <option>Mérida</option>
+                <option>Miranda</option>
+                <option>Monagas</option>
+                <option>Nueva Esparta</option>
+                <option>Portuguesa</option>
+                <option>Sucre</option>
+                <option>Táchira</option>
+                <option>Trujillo</option>
+                <option>Vargas</option>
+                <option>Yaracuy</option>
+                <option>Zulia</option>
+                <option>Dependencias Federales</option>
+            </select>
+
+            <label for="direccion_fiscal">Dirección Fiscal:</label>
+            <textarea id="direccion_fiscal" name="direccion_fiscal" rows="3" placeholder="Ingrese la dirección fiscal" required></textarea>
+
+            <label for="direccion_atencion">Dirección de Atención:</label>
+            <textarea id="direccion_atencion" name="direccion_atencion" rows="3" placeholder="Ingrese la dirección de atención" required></textarea>
+
+            <label for="representante_legal">Representante Legal:</label>
+            <input type="text" id="representante_legal" name="representante_legal" placeholder="Nombre completo del representante legal" required>
+
+            <label for="correo_electronico">Correo electrónico:</label>
+            <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Ejemplo: ejemplo@dominio.com" required>
+
+            <label for="telefono_cliente">Teléfono Cliente:</label>
+            <input type="text" id="telefono_cliente" name="telefono_cliente" placeholder="Ejemplo: (0212) 123-4567" required>
+
+            <label for="movil_cliente">Móvil Cliente:</label>
+            <input type="text" id="movil_cliente" name="movil_cliente" placeholder="Ejemplo: 0412-1234567" required>
+
+            <label for="persona_contacto">Persona Contacto:</label>
+            <input type="text" id="persona_contacto" name="persona_contacto" placeholder="Nombre completo de la persona contacto" required>
+
+            <label for="telefono_contacto">Teléfono Contacto:</label>
+            <input type="text" id="telefono_contacto" name="telefono_contacto" placeholder="Ejemplo: (0212) 123-4567" required>
+
+            <!-- Botón para generar la planilla -->
+            <button type="button" id="generar-planilla-btn">Generar Planilla</button>
+
+            <!-- Pie de página -->
+            <div class="footer">
+                &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
+                Para más información, contáctenos en: 
+                <a href="mailto:arksoft.hybrid@outlook.com">arksoft.hybrid@gmail.com</a>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        // Agregar evento al botón "Generar Planilla"
+        document.getElementById("generar-planilla-btn").addEventListener("click", function () {
+            const formulario = document.getElementById("formulario-clientes");
+            const campos = formulario.querySelectorAll("input, select, textarea");
+
+            // Validar que todos los campos estén completos
+            let formularioCompleto = true;
+            campos.forEach(campo => {
+                if (campo.required && !campo.value.trim()) {
+                    formularioCompleto = false;
+                }
+            });
+
+            if (!formularioCompleto) {
+                alert("Formulario Incompleto, Revise e intente de nuevo");
+                return;
+            }
+
+            // Recopilar datos del formulario
+            const empresa = document.getElementById("empresa_solicitante").value;
+            const rif = document.getElementById("rif").value;
+            const tipoContribuyente = document.getElementById("tipo_contribuyente").value;
+            const fechaInput = document.getElementById("fecha_constitucion").value;
+            const zona = document.getElementById("zona").value;
+            const direccionFiscal = document.getElementById("direccion_fiscal").value;
+            const direccionAtencion = document.getElementById("direccion_atencion").value;
+            const representanteLegal = document.getElementById("representante_legal").value;
+            const correoElectronico = document.getElementById("correo_electronico").value;
+            const telefonoCliente = document.getElementById("telefono_cliente").value;
+            const movilCliente = document.getElementById("movil_cliente").value;
+            const personaContacto = document.getElementById("persona_contacto").value;
+            const telefonoContacto = document.getElementById("telefono_contacto").value;
+
+            // Formatear la fecha
+            const fechaFormateada = new Date(fechaInput).toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+
+            // Crear contenido HTML para la nueva ventana
+            const contenidoDocumento = `
+                <!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Registro de Clientes</title>
+                    <style>
+                        body {
+                            font-family: Arial, sans-serif;
+                            margin: 0;
+                            padding: 20px;
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+                        th, td {
+                            border: 1px solid #ddd;
+                            padding: 10px;
+                            text-align: left;
+                        }
+                        th {
+                            background-color: #005883;
+                            color: white;
+                        }
+                        .print-footer {
+                            margin-top: 20px;
+                            text-align: center;
+                            font-size: 12px;
+                            color: #999;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <h1>Registro de Clientes</h1>
+                    <table>
+                        <tr><td><strong>Empresa Solicitante:</strong></td><td>${empresa}</td></tr>
+                        <tr><td><strong>No. R.I.F.:</strong></td><td>${rif}</td></tr>
+                        <tr><td><strong>Tipo de Contribuyente:</strong></td><td>${tipoContribuyente}</td></tr>
+                        <tr><td><strong>Fecha de Constitución:</strong></td><td>${fechaFormateada}</td></tr>
+                        <tr><td><strong>Zona/Estado:</strong></td><td>${zona}</td></tr>
+                        <tr><td><strong>Dirección Fiscal:</strong></td><td>${direccionFiscal}</td></tr>
+                        <tr><td><strong>Dirección de Atención:</strong></td><td>${direccionAtencion}</td></tr>
+                        <tr><td><strong>Representante Legal:</strong></td><td>${representanteLegal}</td></tr>
+                        <tr><td><strong>Correo Electrónico:</strong></td><td>${correoElectronico}</td></tr>
+                        <tr><td><strong>Teléfono Cliente:</strong></td><td>${telefonoCliente}</td></tr>
+                        <tr><td><strong>Móvil Cliente:</strong></td><td>${movilCliente}</td></tr>
+                        <tr><td><strong>Persona Contacto:</strong></td><td>${personaContacto}</td></tr>
+                        <tr><td><strong>Teléfono Contacto:</strong></td><td>${telefonoContacto}</td></tr>
+                    </table>
+                    <div class="print-footer">
+                        &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
+                        Nombre del archivo: Registro_Clientes.html
+                    </div>
+                    <button onclick="window.print()">Imprimir Documento</button>
+                </body>
+                </html>
+            `;
+
+            // Abrir una nueva ventana y escribir el contenido
+            const ventana = window.open('', '_blank');
+            ventana.document.write(contenidoDocumento);
+            ventana.document.close();
+        });
+    </script>
+</body>
+</html>
