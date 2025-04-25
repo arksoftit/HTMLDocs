@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Clientes</title>
+    <style>
+        /* ... (Mantener los mismos estilos originales) ... */
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Banner corporativo -->
+        <div class="banner">
+            <img src="https://i.imgur.com/Ie4MRYa.png" alt="Banner Corporativo">
+        </div>
+        <!-- Título del formulario -->
+        <h1>Registro de Clientes</h1>
+        <!-- Formulario de registro -->
+        <form name="Registro de Clientes" action="#" method="post">
+            <!-- ... (Mantener los mismos campos del formulario original) ... -->
+            <!-- Botón para abrir la vista previa de impresión -->
+            <button type="button" id="imprimir-btn">Generar Planilla</button>
+            <!-- Pie de página del formulario -->
+            <div class="footer">
+                &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
+                Para más información, contáctenos en: 
+                <a href="mailto:arksoft.hybrid@outlook.com">arksoft.hybrid@gmail.com</a>
+            </div>
+        </form>
+    </div>
+    <script>
+        // Agregar evento al botón de impresión
+        document.getElementById("imprimir-btn").addEventListener("click", function () {
+            // Obtener valores del formulario
+            const empresa = document.getElementById("empresa_solicitante").value.trim();
+            const rif = document.getElementById("No. R.I.F.").value.trim();
+            const tipoContribuyente = document.getElementById("tipo_contribuyente").value;
+            const fechaInput = document.getElementById("fecha_constitucion").value.trim();
+            const zona = document.getElementById("zona").value;
+            const direccionFiscal = document.getElementById("direccion_fiscal").value.trim();
+            const direccionAtencion = document.getElementById("direccion_atencion").value.trim();
+            const representanteLegal = document.getElementById("representante_legal").value.trim();
+            const correoElectronico = document.getElementById("correo_electronico").value.trim();
+            const telefonoCliente = document.getElementById("telefono_cliente").value.trim();
+            const movilCliente = document.getElementById("movil_cliente").value.trim();
+            const personaContacto = document.getElementById("persona_contacto").value.trim();
+            const telefonoContacto = document.getElementById("telefono_contacto").value.trim();
+
+            // Validar que todos los campos estén completos
+            if (!empresa || !rif || !tipoContribuyente || !fechaInput || !zona || !direccionFiscal || !direccionAtencion || !representanteLegal || !correoElectronico || !telefonoCliente || !movilCliente || !personaContacto || !telefonoContacto) {
+                alert("Formulario Incompleto, Revise e intente de nuevo");
+                return; // Detener la ejecución si hay campos vacíos
+            }
+
+            // Formatear la fecha como dd/MM/aaaa
+            const fechaFormateada = new Date(fechaInput).toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+
+            // Crear el contenido HTML para la nueva ventana
+            const contenidoDocumento = `
+                <!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Registro de Clientes</title>
+                    <style>
+                        /* ... (Mantener los mismos estilos originales) ... */
+                    </style>
+                </head>
+                <body>
+                    <!-- Cabecera de la impresión -->
+                    <div class="print-header">
+                        <a href="https://imgur.com/1PGITw8"><img src="https://i.imgur.com/1PGITw8.png" title="source: imgur.com" /></a>
+                        <h1>Registro de Clientes</h1>
+                    </div>
+                    <!-- Tabla para organizar los datos -->
+                    <table class="print-table">
+                        <thead>
+                            <tr>
+                                <th style="width: 40%;">Campo</th>
+                                <th style="width: 60%;">Datos</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Empresa Solicitante:</strong></td>
+                                <td>${empresa}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>No. R.I.F.:</strong></td>
+                                <td>${rif}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tipo de Contribuyente:</strong></td>
+                                <td>${tipoContribuyente}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Fecha de Constitución:</strong></td>
+                                <td>${fechaFormateada}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Zona/Estado:</strong></td>
+                                <td>${zona}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dirección Fiscal:</strong></td>
+                                <td>${direccionFiscal}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Dirección de Atención:</strong></td>
+                                <td>${direccionAtencion}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Representante Legal:</strong></td>
+                                <td>${representanteLegal}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Correo Electrónico:</strong></td>
+                                <td>${correoElectronico}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Teléfono Cliente:</strong></td>
+                                <td>${telefonoCliente}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Móvil Cliente:</strong></td>
+                                <td>${movilCliente}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Persona Contacto:</strong></td>
+                                <td>${personaContacto}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Teléfono Contacto:</strong></td>
+                                <td>${telefonoContacto}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <!-- Pie de página del documento de impresión -->
+                    <div class="print-footer">
+                        &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
+                        Para más información, contáctenos en: 
+                        <a href="mailto:arksoft.hybrid@outlook.com">arksoft.hybrid@gmail.com</a><br>
+                        Nombre del archivo: Registro_Clientes.html
+                    </div>
+                    <!-- Botón de impresión -->
+                    <div class="print-button">
+                        <button onclick="window.print()">Imprimir Documento</button>
+                    </div>
+                </body>
+                </html>
+            `;
+            // Abrir una nueva ventana y escribir el contenido
+            const ventana = window.open('', '_blank');
+            ventana.document.write(contenidoDocumento);
+            ventana.document.close();
+        });
+    </script>
+</body>
+</html>
