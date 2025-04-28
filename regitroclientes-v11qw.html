@@ -4,224 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registro de Clientes</title>
-    <style>
-        /* Estilos generales */
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #6475c2;
-            margin: 0;
-            padding: 20px;
-            width=400px;
-            line-height: 1.6;
-            font-size: 12px; 
-        }
-        /* Estilo para la tabla contenedora */
-        .table-container {
-            width: 600px; /* Ancho fijo */
-            background-color: #ffffff; /* Fondo blanco */
-            margin: 20px auto; /* Centrado horizontal */
-            border-collapse: collapse; /* Elimina bordes adicionales */
-            border: 0; /* Sin bordes */
-            cellpadding: 0; /* Sin espacio interno entre celdas */
-            cellspacing: 0; /* Sin espacio externo entre celdas */
-        }
-        .container {
-            max-width: 600px; /* Ancho máximo del contenedor */
-            margin: 0 auto;
-            background: #fff; /* El contenedor principal sigue siendo blanco */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-        /* Banner corporativo */
-        .banner {
-            display: flex;
-            justify-content: center; /* Centra horizontalmente */
-            align-items: center; /* Centra verticalmente */
-            min-height: 100px; /* Altura mínima para asegurar el centrado */
-            margin-bottom: 5px;
-        }
-        .banner img {
-            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
-            height: auto; /* Mantiene la proporción original */
-            transform: scale(1, 1); /* Reduce la altura en un 30% */
-            transform-origin: top; /* Ajusta el origen de la transformación al tope */
-            display: block; /* Elimina el espacio adicional debajo de la imagen */
-            margin: 0; /* Elimina cualquier margen implícito */
-            vertical-align: top; /* Asegura que la imagen no genere espacio adicional */
-        }
-        h1 {
-            text-align: center;
-            color: white;
-            margin-top: 0; /* Ajusta este valor según sea necesario */
-            margin-bottom: 20px;
-        }
-        .formsection {
-            background-color: #6d97e47c; /* Color de fondo gris claro para la sección del formulario */
-            display: flex;
-            justify-content: center; /* Centra horizontalmente */
-            align-items: center; /* Centra verticalmente */
-            min-height: 100px; /* Altura mínima para asegurar el centrado */
-            margin-bottom: 5px;
-            
-        }
-        form {
-            display: flex;
-            max-width: 600px; 
-            /*justify-content: center;*/
-            flex-direction: column;
-            margin-top: 0; /* Elimina el margen superior */
-            padding-top: 0; /* Elimina el padding superior */
-            align-self: center;
-        }
-        label {
-            font-weight: bold;
-            margin-top: 0;
-            color: white;
-        }
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
-            margin-top: 5px;
-            margin-bottom: 5px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            font-size: 12px;
-            box-sizing: border-box; /* Asegura que el padding y borde no afecten el ancho */
-        }
-        /* Cambiar color de fondo del campo "Empresa Solicitante" */
-        #empresa_solicitante {
-            background-color: #f0f0f0; /* Gris clarito */
-        }
-        button {
-            padding: 10px;
-            background-color: #005883;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #003d5c;
-        }
-
-        /* Pie de página */
-        .footer {
-            margin-top: 20px;
-            padding: 15px 0;
-            background-color: #e2e9f3;
-            font-size: 12px;
-            color: #999999;
-            line-height: 1.4;
-            text-align: center;
-            max-height: 65px; /* Altura máxima para evitar desbordamiento */
-            margin-bottom: 20px;
-        }
-        .footer a {
-            color: #0073e6;
-            text-decoration: none;
-        }
-        .footer a:hover {
-            text-decoration: underline;
-        }
-
-        /* Estilos para la vista previa de impresión */
-        .print-container {
-            margin-top: 20px;
-        }
-        .print-header {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        .print-header img {
-            max-height: 60px;
-            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
-            margin-bottom: 10px;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .print-header h1 {
-            font-size: 24px; /* Encabezado en 24px */
-            color: #005883;
-            margin: 0;
-        }
-        .print-table {
-            width: 100%;
-            border-collapse: collapse;
-            table-layout: auto; /* Ajuste automático del ancho de las columnas */
-        }
-        .print-table th, .print-table td {
-            border: 1px solid #ddd;
-            padding: 10px; /* Espaciado moderado */
-            text-align: left;
-            font-size: 12px; /* Celdas en 12px */
-            line-height: 1.4; /* Interlineado adecuado */
-            white-space: normal; /* Permite que el texto se ajuste dentro de la celda */
-            word-wrap: break-word; /* Rompe palabras largas si es necesario */
-            vertical-align: top; /* Alinea el texto hacia arriba */
-        }
-        .print-table th {
-            background-color: #005883;
-            color: white;
-            font-size: 14px; /* Encabezados de tabla en 14px */
-        }
-        /* Pie de página en la versión impresa */
-        .print-footer {
-            margin-top: 20px;
-            padding: 15px 0;
-            background-color: #f4f4f4;
-            font-size: 12px;
-            color: #999999;
-            line-height: 1.4;
-            text-align: center;
-        }
-        .print-footer a {
-            color: #0073e6;
-            text-decoration: none;
-        }
-        .print-footer a:hover {
-            text-decoration: underline;
-        }
-        /* Botón de impresión en la nueva ventana */
-        .print-button {
-            text-align: center;
-            margin-top: 20px;
-        }
-        .print-button button {
-            padding: 10px 20px;
-            background-color: #005883;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-        }
-        .print-button button:hover {
-            background-color: #003d5c;
-        }
-        @media print {
-            .print-button {
-                display: none; /* Ocultar el botón en la versión impresa */
-            }
-            /* Evitar que el contenido se desborde */
-            body {
-                margin: 0;
-                padding: 0;
-                overflow: visible;
-            }
-            .print-table {
-                page-break-inside: avoid; /* Evita que la tabla se divida entre páginas */
-            }
-            .print-footer {
-                page-break-inside: avoid; /* Evita que el pie de página se divida */
-            }
-            .pdf-container {
-                page-break-before: always; /* Forzar nueva página para el PDF */
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="estilos_ark.css">    
 </head>
 <body>
     <div class="container">
@@ -229,7 +12,7 @@
         <!-- Banner corporativo -->
         <!-- RegistroClientesV11Qw version 11 -->
         <div class="banner">
-            <img src="https://i.imgur.com/1PGITw8.png" alt="Banner Corporativo" style="width: 50%; height: auto;">
+            <img src="https://i.imgur.com/1PGITw8.png" alt="Banner Corporativo">
         </div>
         </div>
 
@@ -244,27 +27,27 @@
                 <input type="text" id="empresa_solicitante" name="empresa_solicitante" placeholder="Ingrese el nombre de la empresa" required>
 
             <!-- Contenedor para No. R.I.F., Tipo de Contribuyente, Fecha de Constitución y Zona/Estado -->
-                <div style="display: flex; gap: 5px; margin-top: 5px;">
-                    <div style="flex: 1; max-width: 280px;">
+            <div class="contenedor-inline">
+                <div class="elemento-flexible elemento-ancho-maximo">
                         <label for="No. R.I.F.">No. R.I.F.:</label>
-                        <input type="text" id="No. R.I.F." name="No. R.I.F." placeholder="J0123456789" required style="width: 100%;">
+                        <input type="text" id="No. R.I.F." name="No. R.I.F." placeholder="J0123456789" required class="campo-ancho-completo">
                     </div>
-                    <div style="flex: 1; max-width: 280px;">
+                    <div class="elemento-flexible elemento-ancho-maximo">
                         <label for="tipo_contribuyente">Tipo de Contribuyente:</label>
-                        <select id="tipo_contribuyente" name="tipo_contribuyente" required style="width: 100%;">
+                        <select id="tipo_contribuyente" name="tipo_contribuyente" required class="campo-ancho-completo">
                             <option value="" disabled selected>Seleccione</option>
                             <option>Ordinario</option>
                             <option>Especial</option>
                             <option>No Contribuyente</option>
                         </select>
                     </div>
-                    <div style="flex: 1; max-width: 280px;">
+                    <div class="elemento-flexible elemento-ancho-maximo">
                         <label for="fecha_constitucion">Fecha de Constitución:</label>
-                        <input type="date" id="fecha_constitucion" name="fecha_constitucion" required style="width: 100%;">
+                        <input type="date" id="fecha_constitucion" name="fecha_constitucion" required class="campo-ancho-completo">
                     </div>
-                    <div style="flex: 1; max-width: 280px;">
+                    <div class="elemento-flexible elemento-ancho-maximo">
                         <label for="zona">Zona/Estado:</label>
-                        <select id="zona" name="zona" required style="width: 100%;">
+                        <select id="zona" name="zona" requiredclass="campo-ancho-completo">
                             <option value="" disabled selected>Seleccione una opción</option>
                             <option>Amazonas</option>
                             <option>Anzoátegui</option>
@@ -295,50 +78,50 @@
                     </div>
                 </div>
                 <!-- Contenedor para Dirección Fiscal y Dirección de Atención -->
-                <div style="display: flex; gap: 5px; margin-top: 5px;">
-                    <div style="flex: 1; max-width: 50%;">
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible elemento-mitad-ancho">
                         <label for="direccion_fiscal">Dirección Fiscal:</label>
-                        <textarea id="direccion_fiscal" name="direccion_fiscal" rows="3" placeholder="Ingrese la dirección fiscal" required style="width: 100%;"></textarea>
+                        <textarea id="direccion_fiscal" name="direccion_fiscal" rows="3" placeholder="Ingrese la dirección fiscal" required class="campo-ancho-completo"></textarea>
                     </div>
-                    <div style="flex: 1;">
+                    <<div class="elemento-flexible elemento-mitad-ancho">
                         <label for="direccion_atencion">Dirección de Atención:</label>
-                        <textarea id="direccion_atencion" name="direccion_atencion" rows="3" placeholder="Ingrese la dirección de atención" required style="width: 100%;"></textarea>
+                        <textarea id="direccion_atencion" name="direccion_atencion" rows="3" placeholder="Ingrese la dirección de atención" required class="campo-ancho-completo"></textarea>
                     </div>
                 </div>
 
                 <!-- Contenedor para Representante Legal y Correo Electrónico -->
-                <div style="display: flex; gap: 5px; margin-top: 5px;">
-                    <div style="flex: 1;">
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible">
                         <label for="representante_legal">Representante Legal:</label>
-                        <input type="text" id="representante_legal" name="representante_legal" placeholder="Nombre completo del representante legal" required style="width: 100%;">
+                        <input type="text" id="representante_legal" name="representante_legal" placeholder="Nombre completo del representante legal" required class="campo-ancho-completo">
                     </div>
-                    <div style="flex: 1;">
+                    <div class="elemento-flexible">
                         <label for="correo_electronico">Correo electrónico:</label>
-                        <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Ejemplo: ejemplo@dominio.com" required style="width: 100%;">
+                        <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Ejemplo: ejemplo@dominio.com" required class="campo-ancho-completo">
                     </div>
                 </div>
 
                 <!-- Contenedor para Teléfono Cliente y Móvil Cliente -->
-                <div style="display: flex; gap: 5px; margin-top: 5px;">
-                    <div style="flex: 1;">
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible">
                         <label for="telefono_cliente">Teléfono Cliente:</label>
-                        <input type="text" id="telefono_cliente" name="telefono_cliente" placeholder="Ejemplo: (0212) 123-4567" required style="width: 100%;">
+                        <input type="text" id="telefono_cliente" name="telefono_cliente" placeholder="Ejemplo: (0212) 123-4567" required class="campo-ancho-completo">
                     </div>
-                    <div style="flex: 1;">
+                    <div class="elemento-flexible">
                         <label for="movil_cliente">Móvil Cliente:</label>
-                        <input type="text" id="movil_cliente" name="movil_cliente" placeholder="Ejemplo: 0412-1234567" required style="width: 100%;">
+                        <input type="text" id="movil_cliente" name="movil_cliente" placeholder="Ejemplo: 0412-1234567" required class="campo-ancho-completo">
                     </div>
                 </div>
 
                 <!-- Contenedor para Persona Contacto y Teléfono Contacto -->
-                <div style="display: flex; gap: 5px; margin-top: 5px;">
-                    <div style="flex: 1;">
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible">
                         <label for="persona_contacto">Persona Contacto:</label>
-                        <input type="text" id="persona_contacto" name="persona_contacto" placeholder="Nombre completo de la persona contacto" required style="width: 100%;">
+                        <input type="text" id="persona_contacto" name="persona_contacto" placeholder="Nombre completo de la persona contacto" required class="campo-ancho-completo">
                     </div>
-                    <div style="flex: 1;">
+                    <div class="elemento-flexible">
                         <label for="telefono_contacto">Teléfono Contacto:</label>
-                        <input type="text" id="telefono_contacto" name="telefono_contacto" placeholder="Ejemplo: (0212) 123-4567" required style="width: 100%;">
+                        <input type="text" id="telefono_contacto" name="telefono_contacto" placeholder="Ejemplo: (0212) 123-4567" required class="campo-ancho-completo">
                     </div>
                 </div>
                 <!-- Información Actividad Económica -->
