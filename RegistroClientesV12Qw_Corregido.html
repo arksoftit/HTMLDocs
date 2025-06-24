@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Registro de Clientes</title>
+  <style>
+    /* Estilos generales */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #6475c2;
+      margin: 0 auto;
+      padding: 20px;
+      width: 600px;
+      line-height: 1.6;
+      font-size: 12px;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .banner {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100px;
+      margin-bottom: 5px;
+    }
+
+    .banner img {
+      max-width: 50%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    h1 {
+      text-align: center;
+      color: white;
+      margin-top: 0;
+      margin-bottom: 20px;
+    }
+
+    .formsection {
+      background-color: #6d97e47c;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100px;
+      margin-bottom: 5px;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      margin-top: 0;
+      padding-top: 0;
+      align-self: center;
+    }
+
+    label {
+      font-weight: bold;
+      margin-top: 0;
+      color: white;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 12px;
+      box-sizing: border-box;
+    }
+
+    #empresa_solicitante {
+      background-color: #f0f0f0;
+    }
+
+    button {
+      padding: 10px;
+      background-color: #005883;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background-color: #003d5c;
+    }
+
+    .footer {
+      margin-top: 20px;
+      padding: 15px 0;
+      background-color: #e2e9f3;
+      font-size: 12px;
+      color: #999999;
+      line-height: 1.4;
+      text-align: center;
+      max-height: 65px;
+      margin-bottom: 20px;
+    }
+
+    .footer a {
+      color: #0073e6;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+    @media print {
+      .print-button {
+        display: none;
+      }
+    }
+
+    .print-button {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .print-button button {
+      padding: 10px 20px;
+      background-color: #005883;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .print-button button:hover {
+      background-color: #003d5c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="banner">
+      <img src="https://i.imgur.com/1PGITw8.png " alt="Banner Corporativo" />
+    </div>
+
+    <h1>Registro de Clientes</h1>
+
+    <div class="formsection">
+      <form id="registro-form" name="Registro de Clientes" action="#" method="post">
+        <!-- Campos del formulario -->
+        <label for="empresa_solicitante">Empresa Solicitante/Cliente:</label>
+        <input type="text" id="empresa_solicitante" name="empresa_solicitante" placeholder="Ingrese el nombre de la empresa" required />
+
+        <label for="No. R.I.F.">No. R.I.F.:</label>
+        <input type="text" id="No. R.I.F." name="No. R.I.F." placeholder="J0123456789" required />
+
+        <label for="tipo_contribuyente">Tipo de Contribuyente:</label>
+        <select id="tipo_contribuyente" name="tipo_contribuyente" required>
+          <option value="" disabled selected>Seleccione</option>
+          <option>Ordinario</option>
+          <option>Especial</option>
+          <option>No Contribuyente</option>
+        </select>
+
+        <label for="fecha_constitucion">Fecha de Constitución:</label>
+        <input type="date" id="fecha_constitucion" name="fecha_constitucion" required />
+
+        <label for="zona">Zona/Estado:</label>
+        <select id="zona" name="zona" required>
+          <option value="" disabled selected>Seleccione una opción</option>
+          <option>Amazonas</option>
+          <option>Anzoátegui</option>
+          <option>Apure</option>
+          <option>Aragua</option>
+          <option>Barinas</option>
+          <option>Bolívar</option>
+          <option>Carabobo</option>
+          <option>Cojedes</option>
+          <option>Delta Amacuro</option>
+          <option>Distrito Capital</option>
+          <option>Falcón</option>
+          <option>Guárico</option>
+          <option>Lara</option>
+          <option>Mérida</option>
+          <option>Miranda</option>
+          <option>Monagas</option>
+          <option>Nueva Esparta</option>
+          <option>Portuguesa</option>
+          <option>Sucre</option>
+          <option>Táchira</option>
+          <option>Trujillo</option>
+          <option>Vargas</option>
+          <option>Yaracuy</option>
+          <option>Zulia</option>
+          <option>Dependencias Federales</option>
+        </select>
+
+        <label for="direccion_fiscal">Dirección Fiscal:</label>
+        <textarea id="direccion_fiscal" name="direccion_fiscal" rows="3" placeholder="Ingrese la dirección fiscal" required></textarea>
+
+        <label for="direccion_atencion">Dirección de Atención:</label>
+        <textarea id="direccion_atencion" name="direccion_atencion" rows="3" placeholder="Ingrese la dirección de atención" required></textarea>
+
+        <label for="representante_legal">Representante Legal:</label>
+        <input type="text" id="representante_legal" name="representante_legal" placeholder="Nombre completo del representante legal" required />
+
+        <label for="correo_electronico">Correo electrónico:</label>
+        <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Ejemplo: ejemplo@dominio.com" required />
+
+        <label for="telefono_cliente">Teléfono Cliente:</label>
+        <input type="text" id="telefono_cliente" name="telefono_cliente" placeholder="Ejemplo: (0212) 123-4567" required />
+
+        <label for="movil_cliente">Móvil Cliente:</label>
+        <input type="text" id="movil_cliente" name="movil_cliente" placeholder="Ejemplo: 0412-1234567" required />
+
+        <label for="persona_contacto">Persona Contacto:</label>
+        <input type="text" id="persona_contacto" name="persona_contacto" placeholder="Nombre completo de la persona contacto" required />
+
+        <label for="telefono_contacto">Teléfono Contacto:</label>
+        <input type="text" id="telefono_contacto" name="telefono_contacto" placeholder="Ejemplo: (0212) 123-4567" required />
+
+        <label for="Actividad_Economica">Actividad Económica:</label>
+        <input type="text" id="Actividad_Economica" name="Actividad_Economica" placeholder="Describa la Actividad Económica de la Empresa" required />
+
+        <label for="pdf-file" class="no-print">Anexar PDF (Requerido):</label>
+        <input type="file" id="pdf-file" accept="application/pdf" class="no-print" required />
+
+        <!-- Botones -->
+        <div style="display: flex; justify-content: space-between; margin-top: 20px;">
+          <button type="button" id="limpiar-btn" class="clear-button">Limpiar Campos</button>
+          <button type="button" id="imprimir-btn" class="no-print">Generar Planilla</button>
+        </div>
+
+        <!-- Pie de página -->
+        <div class="footer no-print">
+          &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br />
+          RegistroClientesV12Qw<br />
+          <a href="mailto:arksoft.sistemas@gmail.com">arksoft.sistemas@gmail.com</a>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Función para generar planilla
+    document.getElementById("imprimir-btn").addEventListener("click", function () {
+      const form = document.getElementById("registro-form");
+      const pdfFile = document.getElementById("pdf-file").files[0];
+
+      let hasEmptyFields = false;
+      Array.from(form.elements).forEach((element) => {
+        if (element.required && !element.value) {
+          hasEmptyFields = true;
+        }
+      });
+
+      if (hasEmptyFields) {
+        alert("Por favor, complete todos los campos obligatorios.");
+        return;
+      }
+
+      if (!pdfFile) {
+        alert("Debe anexar un archivo PDF antes de generar la planilla.");
+        return;
+      }
+
+      const empresa = document.getElementById("empresa_solicitante").value;
+      const rif = document.getElementById("No. R.I.F.").value;
+      const tipoContribuyente = document.getElementById("tipo_contribuyente").value;
+      const fechaInput = document.getElementById("fecha_constitucion").value;
+      const zona = document.getElementById("zona").value;
+      const direccionFiscal = document.getElementById("direccion_fiscal").value;
+      const direccionAtencion = document.getElementById("direccion_atencion").value;
+      const representanteLegal = document.getElementById("representante_legal").value;
+      const correoElectronico = document.getElementById("correo_electronico").value;
+      const telefonoCliente = document.getElementById("telefono_cliente").value;
+      const movilCliente = document.getElementById("movil_cliente").value;
+      const personaContacto = document.getElementById("persona_contacto").value;
+      const telefonoContacto = document.getElementById("telefono_contacto").value;
+      const actividadEconomica = document.getElementById("Actividad_Economica").value;
+
+      const fechaFormateada = new Date(fechaInput).toLocaleDateString('es-ES', {
+        day: '2-digit',
+        month: '2-digit',
+        year: 'numeric'
+      });
+
+      const pdfUrl = URL.createObjectURL(pdfFile);
+
+      const contenidoDocumento = `
+        <!DOCTYPE html>
+        <html lang="es">
+        <head>
+          <meta charset="UTF-8" />
+          <title>Vista Previa</title>
+          <style>
+            body { font-family: Arial, sans-serif; }
+            table { width: 100%; border-collapse: collapse; }
+            th, td { border: 1px solid #ccc; padding: 10px; text-align: left; }
+            .print-footer { margin-top: 20px; text-align: center; color: gray; }
+            .print-button { text-align: center; margin-top: 20px; }
+          </style>
+        </head>
+        <body>
+          <h2>Registro de Cliente</h2>
+          <table>
+            <tr><th>Campo</th><th>Datos</th></tr>
+            <tr><td>Empresa Solicitante</td><td>${empresa}</td></tr>
+            <tr><td>No. R.I.F.</td><td>${rif}</td></tr>
+            <tr><td>Tipo de Contribuyente</td><td>${tipoContribuyente}</td></tr>
+            <tr><td>Fecha de Constitución</td><td>${fechaFormateada}</td></tr>
+            <tr><td>Zona/Estado</td><td>${zona}</td></tr>
+            <tr><td>Dirección Fiscal</td><td>${direccionFiscal}</td></tr>
+            <tr><td>Dirección de Atención</td><td>${direccionAtencion}</td></tr>
+            <tr><td>Representante Legal</td><td>${representanteLegal}</td></tr>
+            <tr><td>Correo Electrónico</td><td>${correoElectronico}</td></tr>
+            <tr><td>Teléfono Cliente</td><td>${telefonoCliente}</td></tr>
+            <tr><td>Móvil Cliente</td><td>${movilCliente}</td></tr>
+            <tr><td>Persona Contacto</td><td>${personaContacto}</td></tr>
+            <tr><td>Teléfono Contacto</td><td>${telefonoContacto}</td></tr>
+            <tr><td>Actividad Económica</td><td>${actividadEconomica}</td></tr>
+          </table>
+          <embed src="${pdfUrl}" type="application/pdf" width="100%" height="600px" />
+          <div class="print-footer">&copy; 2025 Arksoft Integradores de Sistemas, C.A.</div>
+          <div class="print-button"><button onclick="window.print()">Imprimir Documento</button></div>
+        </body>
+        </html>
+      `;
+
+      const ventana = window.open('', '_blank');
+      ventana.document.write(contenidoDocumento);
+      ventana.document.close();
+    });
+
+    // Función para limpiar campos
+    document.getElementById("limpiar-btn").addEventListener("click", function () {
+      if (confirm("¿Está seguro de que desea limpiar todos los campos?")) {
+        document.getElementById("registro-form").reset();
+        document.getElementById("pdf-file").value = "";
+      }
+    });
+  </script>
+</body>
+</html>
