@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Verificación Previa A2 Softway</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6475c2; /* Fondo azul del formulario de registro */
+            margin: 0 auto;
+            padding: 20px;
+            width: 600px; /* Ancho fijo del formulario de registro */
+            line-height: 1.6;
+            font-size: 12px; /* Tamaño de fuente del formulario de registro */
+            color: white; /* Texto en blanco para contrastar con el fondo */
+        }
+        .banner {
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            min-height: 100px; /* Altura mínima para asegurar el centrado */
+            margin-bottom: 5px;
+        }
+        .banner img {
+            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+            height: auto; /* Mantiene la proporción original */
+            display: block; /* Elimina el espacio adicional debajo de la imagen */
+            margin: 0; /* Elimina cualquier margen implícito */
+            width: 50%; /* Ancho del banner (puedes ajustarlo) */
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff; /* Fondo blanco para el contenido del formulario */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            color: #333; /* Color de texto dentro del contenedor */
+        }
+        h1 {
+            text-align: center;
+            color: white; /* Título en blanco sobre el fondo azul */
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+        h2 {
+            color: #005883; /* Subtítulos en azul oscuro */
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #e0e0e0;
+            padding-bottom: 5px;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 10px;
+            display: block;
+            color: #555; /* Color de las etiquetas dentro del contenedor blanco */
+        }
+        input[type="text"],
+        input[type="email"],
+        input[type="date"],
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 12px;
+            color: #333; /* Color del texto en los campos */
+        }
+        .checkbox-group {
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+        .checkbox-group label {
+            display: inline-block;
+            font-weight: normal;
+            margin-right: 15px;
+            color: #555;
+        }
+        .checkbox-group input[type="checkbox"],
+        .checkbox-group input[type="radio"] {
+            display: inline-block;
+            width: auto;
+            margin-right: 5px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9; /* Fondo claro para la tabla */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+            font-size: 12px;
+            color: #333;
+        }
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .observaciones-box {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 12px;
+            min-height: 80px;
+            color: #333;
+        }
+        .firma-line {
+            border-bottom: 1px dashed #bbb;
+            padding: 5px 0;
+            margin-top: 10px;
+            margin-bottom: 15px;
+        }
+        .firma-label {
+            font-weight: normal;
+            font-style: italic;
+            color: #777;
+            display: block;
+            margin-top: 5px;
+        }
+        .footer {
+            margin-top: 20px;
+            padding: 15px 0;
+            background-color: #e2e9f3; /* Fondo del pie de página del registro */
+            font-size: 12px;
+            color: #999999; /* Color del texto del pie de página */
+            line-height: 1.4;
+            text-align: center;
+            max-height: 65px;
+            margin-bottom: 20px;
+        }
+        .footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+        .contenedor-inline {
+            display: flex;
+            gap: 5px;
+            margin-top: 5px;
+        }
+        .elemento-flexible {
+            flex: 1;
+        }
+        .elemento-ancho-maximo {
+            max-width: 280px;
+        }
+        .elemento-mitad-ancho {
+            flex: 1;
+            max-width: 50%;
+        }
+        .campo-ancho-completo {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="banner">
+        <img src="https://i.imgur.com/1PGITw8.png" alt="Banner Corporativo">
+    </div>
+
+    <div class="container">
+        <h1>FORMULARIO DE VERIFICACIÓN PREVIA A LA INSTALACIÓN/ACTUALIZACIÓN DE A2 SOFTWAY</h1>
+        <label for="fecha">Fecha: <input type="date" id="fecha" name="fecha"></label>
+
+        <h2>Información del Usuario:</h2>
+        <label for="nombre_razon_social">Nombre/Razón Social: <input type="text" id="nombre_razon_social" name="nombre_razon_social"></label>
+        <label for="rif">RIF: <input type="text" id="rif" name="rif"></label>
+        <label for="direccion">Dirección: <textarea id="direccion" name="direccion" rows="2"></textarea></label>
+        <label for="representante_legal">Nombre (Representante Legal): <input
