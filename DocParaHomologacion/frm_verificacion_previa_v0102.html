@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación Previa a la Homologación</title>
+    <style>  
+         /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6475c2;
+            margin: 0 auto;
+            padding: 20px;
+            width: 600px;
+            line-height: 1.6;
+            font-size: 12px; 
+        }
+        /* Estilo para la tabla contenedora */
+        .table-container {
+            width: 600px; /* Ancho fijo */
+            background-color: #ffffff; /* Fondo blanco */
+            margin: 20px auto; /* Centrado horizontal */
+            border-collapse: collapse; /* Elimina bordes adicionales */
+            border: 0; /* Sin bordes */
+        }
+        .container {
+            max-width: 600px; /* Ancho máximo del contenedor */
+            margin: 0 auto;
+            background: #fff; /* El contenedor principal sigue siendo blanco */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Banner corporativo */
+        .banner {
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            min-height: 100px; /* Altura mínima para asegurar el centrado */
+            margin-bottom: 5px;
+        }
+        .banner img {
+            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+            height: auto; /* Mantiene la proporción original */
+            transform: scale(1, 1); /* Reduce la altura en un 30% */
+            transform-origin: top; /* Ajusta el origen de la transformación al tope */
+            display: block; /* Elimina el espacio adicional debajo de la imagen */
+            margin: 0; /* Elimina cualquier margen implícito */
+            width: 50%; 
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-top: 0; /* Ajusta este valor según sea necesario */
+            margin-bottom: 20px;
+        }
+        h2 {
+            text-align: left; /* Alineación a la izquierda */
+            color: rgb(14, 14, 143);    /* Color azul */
+            margin-top: 15px; /* Espacio superior para separarlos de la sección anterior */
+            margin-bottom: 10px; /* Espacio inferior */
+            border-bottom: 1px solid #ccc; /* Opcional: una línea debajo del subtítulo */
+            padding-bottom: 5px; /* Opcional: espacio entre el texto y la línea */
+        }
+        .formsection {
+            background-color: #6d97e47c; /* Color de fondo gris claro para la sección del formulario */
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            min-height: 100px; /* Altura mínima para asegurar el centrado */
+            margin-bottom: 5px;
+            
+        }
+        form {
+            display: flex;
+            max-width: 600px; 
+            /*justify-content: center;*/
+            flex-direction: column;
+            margin-top: 0; /* Elimina el margen superior */
+            padding-top: 0; /* Elimina el padding superior */
+            align-self: center;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 0;
+            color: white;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+            box-sizing: border-box; /* Asegura que el padding y borde no afecten el ancho */
+        }
+        /* Cambiar color de fondo del campo "Empresa Solicitante" */
+        #empresa_solicitante {
+            background-color: #f0f0f0; /* Gris clarito */
+        }
+        button {
+            padding: 10px;
+            background-color: #005883;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #003d5c;
+        }
+
+        /* Pie de página */
+        .footer {
+            margin-top: 20px;
+            padding: 15px 0;
+            background-color: #e2e9f3;
+            font-size: 12px;
+            color: #999999;
+            line-height: 1.4;
+            text-align: center;
+            max-height: 65px; /* Altura máxima para evitar desbordamiento */
+            margin-bottom: 20px;
+        }
+        .footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos para la vista previa de impresión */
+        .print-container {
+            margin-top: 20px;
+        }
+        .print-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .print-header img {
+            max-height: 60px;
+            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .print-header h1 {
+            font-size: 24px; /* Encabezado en 24px */
+            color: #005883;
+            margin: 0;
+        }
+        .print-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto; /* Ajuste automático del ancho de las columnas */
+        }
+        .print-table th, .print-table td {
+            border: 1px solid #ddd;
+            padding: 10px; /* Espaciado moderado */
+            text-align: left;
+            font-size: 12px; /* Celdas en 12px */
+            line-height: 1.4; /* Interlineado adecuado */
+            white-space: normal; /* Permite que el texto se ajuste dentro de la celda */
+            word-wrap: break-word; /* Rompe palabras largas si es necesario */
+            vertical-align: top; /* Alinea el texto hacia arriba */
+        }
+        .print-table th {
+            background-color: #005883;
+            color: white;
+            font-size: 14px; /* Encabezados de tabla en 14px */
+        }
+        /* Pie de página en la versión impresa */
+        .print-footer {
+            margin-top: 20px;
+            padding: 15px 0;
+            background-color: #f4f4f4;
+            font-size: 12px;
+            color: #999999;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .print-footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        .print-footer a:hover {
+            text-decoration: underline;
+        }
+        /* Botón de impresión en la nueva ventana */
+        .print-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .print-button button {
+            padding: 10px 20px;
+            background-color: #005883;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .print-button button:hover {
+            background-color: #003d5c;
+        }
+        /* Estilos para el contenedor principal de elementos en línea */
+        .contenedor-inline {
+            display: flex;
+            gap: 5px; /* Espacio entre los elementos internos */
+            margin-top: 5px; /* Margen superior */
+        }
+
+        /* Estilos para los elementos flexibles dentro del contenedor */
+        .elemento-flexible {
+            flex: 1; /* Permite que los elementos crezcan y se encojan proporcionalmente */
+        }
+
+        /* Estilo para el elemento flexible con ancho máximo */
+        .elemento-ancho-maximo {
+            max-width: 280px; /* Ancho máximo específico */
+        }
+
+        /* Estilo para el elemento flexible que ocupa el 50% del ancho */
+        .elemento-mitad-ancho {
+            flex: 1;
+            max-width: 50%; /* Ancho máximo del 50% */
+        }
+
+        /* Estilo para inputs, selects y textareas que ocupan todo el ancho de su contenedor */
+        .campo-ancho-completo {
+            width: 100%;
+        }
+        /* Estilos para el PDF */
+
+        /* Estilos para la vista previa de impresión */
+        @media print {
+            .print-button {
+                display: none; /* Ocultar el botón en la versión impresa */
+            }
+            /* Evitar que el contenido se desborde */
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: visible;
+            }
+            .print-table {
+                page-break-inside: avoid; /* Evita que la tabla se divida entre páginas */
+            }
+            .print-footer {
+                page-break-inside: avoid; /* Evita que el pie de página se divida */
+            }
+            .pdf-container {
+                page-break-before: always; /* Forzar nueva página para el PDF */
+            }
+        }
+    </style>  
+</head>
+<body>
+    <div class="container">
+                
+        <!-- Banner corporativo -->
+        <!-- RegistroClientesV12Qw version 11 -->
+        <div class="banner">
+            <img src="https://i.imgur.com/1PGITw8.png" alt="Banner Corporativo">
+        </div>
+        </div>
+
+        <!-- Título del formulario -->
+        <h1>Verificación Previa a la Homologación</h1>
+        <h2>Información del Usuario:</h2>      
+        
+        <div class="formsection">
+            <!-- Formulario de Verificación -->
+            <form name="Verificación Previa a la Homologación" action="#" method="post">
+                <!-- Información básica -->
+                <label for="empresa_solicitante">•	Nombre/Razón Social:</label>
+                <input type="text" id="empresa_solicitante" name="empresa_solicitante" placeholder="Ingrese el nombre de la empresa" required>
+
+            <!-- Contenedor para No. R.I.F., Tipo de Contribuyente, Fecha de Constitución y Zona/Estado -->
+            <div class="contenedor-inline">
+                <div class="elemento-flexible elemento-ancho-maximo">
+                        <label for="No. R.I.F.">No. R.I.F.:</label>
+                        <input type="text" id="No. R.I.F." name="No. R.I.F." placeholder="J0123456789" required class="campo-ancho-completo">
+                    </div>
+                    <div class="elemento-flexible elemento-ancho-maximo">
+                        <label for="tipo_contribuyente">Tipo de Contribuyente:</label>
+                        <select id="tipo_contribuyente" name="tipo_contribuyente" required class="campo-ancho-completo">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option>Ordinario</option>
+                            <option>Especial</option>
+                            <option>No Contribuyente</option>
+                        </select>
+                    </div>
+                    <div class="elemento-flexible elemento-ancho-maximo">
+                        <label for="fecha_constitucion">Fecha de la Verificación:</label>
+                        <input type="date" id="fecha_constitucion" name="fecha_constitucion" required class="campo-ancho-completo">
+                    </div>
+                    <div class="elemento-flexible elemento-ancho-maximo">
+                        <label for="zona">Zona/Estado:</label>
+                        <select id="zona" name="zona" requiredclass="campo-ancho-completo">
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option>Amazonas</option>
+                            <option>Anzoátegui</option>
+                            <option>Apure</option>
+                            <option>Aragua</option>
+                            <option>Barinas</option>
+                            <option>Bolívar</option>
+                            <option>Carabobo</option>
+                            <option>Cojedes</option>
+                            <option>Delta Amacuro</option>
+                            <option>Distrito Capital</option>
+                            <option>Falcón</option>
+                            <option>Guárico</option>
+                            <option>Lara</option>
+                            <option>Mérida</option>
+                            <option>Miranda</option>
+                            <option>Monagas</option>
+                            <option>Nueva Esparta</option>
+                            <option>Portuguesa</option>
+                            <option>Sucre</option>
+                            <option>Táchira</option>
+                            <option>Trujillo</option>
+                            <option>Vargas</option>
+                            <option>Yaracuy</option>
+                            <option>Zulia</option>
+                            <option>Dependencias Federales</option>
+                        </select>
+                    </div>
+                </div>
+                <!-- Contenedor para Dirección Fiscal y Dirección de Atención -->
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible elemento-mitad-ancho">
+                        <label for="direccion_fiscal">Dirección Fiscal:</label>
+                        <textarea id="direccion_fiscal" name="direccion_fiscal" rows="3" placeholder="Ingrese la dirección fiscal" required class="campo-ancho-completo"></textarea>
+                    </div>
+                    <<div class="elemento-flexible elemento-mitad-ancho">
+                        <label for="direccion_atencion">Dirección de Atención:</label>
+                        <textarea id="direccion_atencion" name="direccion_atencion" rows="3" placeholder="Ingrese la dirección de atención" required class="campo-ancho-completo"></textarea>
+                    </div>
+                </div>
+
+                <!-- Contenedor para Representante Legal y Correo Electrónico -->
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible">
+                        <label for="representante_legal">Representante Legal:</label>
+                        <input type="text" id="representante_legal" name="representante_legal" placeholder="Nombre completo del representante legal" required class="campo-ancho-completo">
+                    </div>
+                    <div class="elemento-flexible">
+                        <label for="correo_electronico">Correo electrónico:</label>
+                        <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Ejemplo: ejemplo@dominio.com" required class="campo-ancho-completo">
+                    </div>
+                </div>
+
+                <!-- Contenedor para Teléfono Cliente y Móvil Cliente -->
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible">
+                        <label for="telefono_cliente">Teléfono Cliente:</label>
+                        <input type="text" id="telefono_cliente" name="telefono_cliente" placeholder="Ejemplo: (0212) 123-4567" required class="campo-ancho-completo">
+                    </div>
+                    <div class="elemento-flexible">
+                        <label for="movil_cliente">Móvil Cliente:</label>
+                        <input type="text" id="movil_cliente" name="movil_cliente" placeholder="Ejemplo: 0412-1234567" required class="campo-ancho-completo">
+                    </div>
+                </div>
+
+                <!-- Contenedor para Persona Contacto y Teléfono Contacto -->
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible">
+                        <label for="persona_contacto">Persona Contacto:</label>
+                        <input type="text" id="persona_contacto" name="persona_contacto" placeholder="Nombre completo de la persona contacto" required class="campo-ancho-completo">
+                    </div>
+                    <div class="elemento-flexible">
+                        <label for="telefono_contacto">Teléfono Contacto:</label>
+                        <input type="text" id="telefono_contacto" name="telefono_contacto" placeholder="Ejemplo: (0212) 123-4567" required class="campo-ancho-completo">
+                    </div>
+                </div>
+        
+                <!-- Información Actividad Económica -->
+                <label for="Actividad_Economica">Actividad Económica:</label>
+                <input type="text" id="Actividad_Economica" name="Actividad_Economica" placeholder="Describa la Actividad Económica de la Empresa" required>
+
+         <h2>Información del Distribuidor Autorizado a2:</h2>
+         
+         <!-- Contenedor para Datos del Distribuidor a2 -->
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible">
+                        <label for="distribuidor_a2">•	Distribuidor Autorizado a2:</label>
+                        <input type="text" id="distribuidor_a2" name="distribuidor_a2" placeholder="Nombre del Distribuidor Autorizado a2" required class="campo-ancho-completo">
+                    </div>
+                    <div class="elemento-flexible">
+                        <label for="codigo_distribuidor">•	Código de Distribuidor a2:</label>
+                        <input type="codigo_distribuidor" id="codigo_distribuidor" name="codigo_distribuidor" placeholder="Codigo del Distribuidor Autorizado a2" required class="campo-ancho-completo">
+                    </div>
+                
+                </div>
+                <div class="elemento-flexible">
+                        <label for="productos_a2">Productos a Instalar/Actualizar:</label>
+                        <select id="productos_a2" name="productos_a2" required class="campo-ancho-completo">
+                            <option value="" disabled selected>Seleccione una opción</option>
+                            <option>a2 ADMINISTRATIVO BASICO + PUNTO DE VENTAS</option>
+                            <option>a2 HERRAMIENTA ADMINISTRATIVA CONFIGURABLE</option>
+                            <option>a2 ALIMENTOS Y BEBIDAS + 2 PUNTOS DE VENTAS ( 1 CAJA + 1 TOMA DE COMANDA)</option>
+                            <option>a2 PUNTO DE VENTA CONFIGURABLE</option>
+                            <option>a2 PUNTO DE VENTA CONFIGURABLE ALIMENTOS Y BEBIDAS (1 CAJA ó TOMA DE COMANDA)</option>
+                            <option>a2 RESTAURANTE</option>
+                            <option>a2 SUITE ALIMENTOS Y BEBIDAS</option>                            
+                        </select>
+                    </div>
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible">
+                        <label for="version_producto">•	Versión del Producto:</label>
+                        <input type="version_producto" id="version_producto" name="version_producto" placeholder="Version a Instalar/Actualoizar" required class="campo-ancho-completo"> 
+                    </div>
+                    <div class="elemento-flexible">
+                        <label for="seriales_productos">•	Versión del Producto:</label>
+                        <input type="seriales_productos" id="seriales_productos" name="seriales_productos" placeholder="Serial(es) de el(los) productos a Instalar/Actualoizar" required class="campo-ancho-completo"> 
+                    </div>
+                </div>
+                <div class="elemento-flexible">
+                        <label for="licencias_existentes">Verificación de Licencias Existentes:</label>
+                        <input type="text" id="licencias_existentes" name="licencias_existentes" placeholder="Verificación de Licencias Existentes:" required>
+                </div>
+                <div>
+                    <label>¿El usuario tiene otras aplicaciones de software administrativo instaladas?</label><br>
+                    
+                    <div class="elemento-flexible" style="display: flex; align-items: right; justify-content: flex-start;">
+                        <label for="tiene_otras_licencias_si" style="margin-right: 10px;">Sí:</label>
+                        <input type="radio" id="tiene_otras_licencias_si" name="tiene_otras_licencias" value="si" style="margin-right: 10px;">
+                        
+                    </div>
+                    <div class="elemento-flexible" style="display: flex; align-items: center; justify-content: flex-start;">
+                        <label for="tiene_otras_licencias_no">No:</label>
+                        <input type="radio" id="tiene_otras_licencias_no" name="tiene_otras_licencias" value="no" style="margin-right: 10px;">
+                        
+                    </div>
+                </div>
+            
+         
+
+                <!-- Botón para cargar el PDF -->
+                <label for="pdf-file" class="no-print">Anexar PDF (Requerido):</label>
+                <input type="file" id="pdf-file" accept="application/pdf" class="no-print" required>
+
+                <!-- Botón para abrir la vista previa de impresión -->
+                <button type="submit" id="imprimir-btn" class="no-print">Generar Planilla</button>
+
+                <!-- Pie de página del formulario -->
+                <div class="footer no-print">
+                    &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
+                    RegistroClientesV12Qw<br>
+                    Para más información, contáctenos en: 
+                    <a href="mailto:arksoft.sistemas@gmail.com">arksoft.sistemas@gmail.com</a>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Agregar evento al botón de impresión
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Evita que el formulario se envíe
+            // Obtener valores del formulario
+            const empresa = document.getElementById("empresa_solicitante").value;
+            const rif = document.getElementById("No. R.I.F.").value;
+            const tipoContribuyente = document.getElementById("tipo_contribuyente").value;
+            const fechaInput = document.getElementById("fecha_constitucion").value;
+            const zona = document.getElementById("zona").value;
+            const direccionFiscal = document.getElementById("direccion_fiscal").value;
+            const direccionAtencion = document.getElementById("direccion_atencion").value;
+            const representanteLegal = document.getElementById("representante_legal").value;
+            const correoElectronico = document.getElementById("correo_electronico").value;
+            const telefonoCliente = document.getElementById("telefono_cliente").value;
+            const movilCliente = document.getElementById("movil_cliente").value;
+            const personaContacto = document.getElementById("persona_contacto").value;
+            const telefonoContacto = document.getElementById("telefono_contacto").value;
+            const actividadEconomica = document.getElementById("Actividad_Economica").value;
+
+            // Formatear la fecha como dd/MM/aaaa
+            const fechaFormateada = new Date(fechaInput).toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+
+            // Crear el contenido HTML para la nueva ventana
+            let contenidoDocumento = `
+                <!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <title>Verificación Previa a la Homologación</title>
+                    <style>
+                        /* Estilos para la vista previa de impresión */
+                        body {
+                            font-family: Arial, sans-serif;
+                            background-color: #fff;
+                            margin: 0;
+                            padding: 20px;
+                            line-height: 1.4;
+                        }
+                        h1 {
+                            text-align: center;
+                            color: rgb(46, 43, 228);
+                            margin-top: 0; /* Ajusta este valor según sea necesario */
+                            margin-bottom: 20px;
+                            font-size: 22px;
+                        }
+                        .print-header img {
+                            max-height: 60px;
+                            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+                            margin-bottom: 10px;
+                            display: block;
+                            margin-left: auto;
+                            margin-right: auto;
+                        }
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                        }
+                        th, td {
+                            border: 1px solid #ddd;
+                            padding: 10px;
+                            text-align: left;
+                            font-size: 12px;
+                        }
+                        th {
+                            background-color: #005883;
+                            color: white;
+                        }
+                        .pdf-container {
+                            page-break-before: always;
+                        }
+                        .print-footer {
+                            margin-top: 20px;
+                            padding: 15px 0;
+                            background-color: #f4f4f4;
+                            font-size: 12px;
+                            color: #999999;
+                            line-height: 1.4;
+                            text-align: center;
+                        }
+                        .print-footer a {
+                            color: #0073e6;
+                            text-decoration: none;
+                        }
+                        .print-footer a:hover {
+                            text-decoration: underline;
+                        }
+                        .print-button {
+                            text-align: center;
+                            margin-top: 20px;
+                        }
+                        .print-button button {
+                            padding: 10px 20px;
+                            background-color: #005883;
+                            color: white;
+                            border: none;
+                            border-radius: 4px;
+                            cursor: pointer;
+                            font-size: 16px;
+                        }
+                        .print-button button:hover {
+                            background-color: #003d5c;
+                        }
+                        @media print {
+                            .print-button {
+                                display: none;
+                            }
+                            .pdf-container {
+                                display: block;
+                            }
+                        }
+                    </style>
+                </head>
+                <body>
+                    <!-- Cabecera de la impresión -->
+                    <div class="print-header">
+                        <a href="https://imgur.com/1PGITw8"><img src="https://i.imgur.com/1PGITw8.png" title="source: imgur.com" /></a>
+                        <h1>Verificación Previa a la Homologación</h1>
+                    </div>                    
+                    <table>
+                        <tr>
+                            <th>Campo</th>
+                            <th>Datos</th>
+                        </tr>
+                        <tr>
+                            <td><strong>Empresa Solicitante:</strong></td>
+                            <td>${empresa}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>No. R.I.F.:</strong></td>
+                            <td>${rif}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Tipo de Contribuyente:</strong></td>
+                            <td>${tipoContribuyente}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Fecha de Constitución:</strong></td>
+                            <td>${fechaFormateada}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Zona/Estado:</strong></td>
+                            <td>${zona}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dirección Fiscal:</strong></td>
+                            <td>${direccionFiscal}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Dirección de Atención:</strong></td>
+                            <td>${direccionAtencion}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Representante Legal:</strong></td>
+                            <td>${representanteLegal}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Correo Electrónico:</strong></td>
+                            <td>${correoElectronico}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Teléfono Cliente:</strong></td>
+                            <td>${telefonoCliente}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Móvil Cliente:</strong></td>
+                            <td>${movilCliente}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Persona Contacto:</strong></td>
+                            <td>${personaContacto}</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Teléfono Contacto:</strong></td>
+                            <td>${telefonoContacto}</td>
+                         <tr>
+                            <td><strong>Actividad Económica:</strong></td>
+                            <td>${actividadEconomica}</td>
+                        </tr>
+                    </table>
+            `;
+
+            // Verificar si se cargó un archivo PDF
+            const pdfFile = document.getElementById("pdf-file").files[0];
+            if (pdfFile) {
+                const pdfUrl = URL.createObjectURL(pdfFile);
+                contenidoDocumento += `
+                    <div class="pdf-container">
+                        <h2>Anexo: ${pdfFile.name}</h2>
+                        <embed src="${pdfUrl}" type="application/pdf" width="100%" height="600px">
+                    </div>
+                `;
+            }
+
+            contenidoDocumento += `
+                <div class="print-footer">
+                    &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
+                    RegistroClientesV12Qw<br>
+                    Para más información, contáctenos en: 
+                    <a href="mailto:arksoft.sistemas@gmail.com">arksoft.sistemas@gmail.com</a>
+                </div>
+                <div class="print-button">
+                    <button onclick="window.print()">Imprimir Documento</button>
+                    <button onclick="window.location.href = window.location.href;">Regresar al Formulario</button>
+                </div>
+                </body>
+                </html>
+            `;
+
+            // Abrir una nueva ventana y escribir el contenido
+            const ventana = window.open('', '_blank');
+            ventana.document.write(contenidoDocumento);
+            ventana.document.close();
+        });
+    </script>
+</body>
+</html>

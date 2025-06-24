@@ -1,0 +1,1076 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación Previa a la Homologación</title>
+    <style>  
+         /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #6475c2;
+            margin: 0 auto;
+            padding: 20px;
+            width: 600px;
+            line-height: 1.6;
+            font-size: 12px; 
+        }
+        /* Estilo para la tabla contenedora */
+        .table-container {
+            width: 600px; /* Ancho fijo */
+            background-color: #ffffff; /* Fondo blanco */
+            margin: 20px auto; /* Centrado horizontal */
+            border-collapse: collapse; /* Elimina bordes adicionales */
+            border: 0; /* Sin bordes */
+        }
+        .container {
+            max-width: 600px; /* Ancho máximo del contenedor */
+            margin: 0 auto;
+            background: #fff; /* El contenedor principal sigue siendo blanco */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        /* Banner corporativo */
+        .banner {
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            min-height: 100px; /* Altura mínima para asegurar el centrado */
+            margin-bottom: 5px;
+        }
+        .banner img {
+            max-width: 100%; /* Asegura que la imagen no exceda el ancho del contenedor */
+            height: auto; /* Mantiene la proporción original */
+            transform: scale(1, 1); /* Reduce la altura en un 30% */
+            transform-origin: top; /* Ajusta el origen de la transformación al tope */
+            display: block; /* Elimina el espacio adicional debajo de la imagen */
+            margin: 0; /* Elimina cualquier margen implícito */
+            width: 50%; 
+        }
+        h1 {
+            text-align: center;
+            color: white;
+            margin-top: 0; /* Ajusta este valor según sea necesario */
+            margin-bottom: 20px;
+        }
+        h2 {
+            text-align: left; /* Alineación a la izquierda */
+            color: rgb(14, 14, 143);    /* Color azul */
+            margin-top: 15px; /* Espacio superior para separarlos de la sección anterior */
+            margin-bottom: 10px; /* Espacio inferior */
+            border-bottom: 1px solid #ccc; /* Opcional: una línea debajo del subtítulo */
+            padding-bottom: 5px; /* Opcional: espacio entre el texto y la línea */
+        }
+        .formsection {
+            background-color: #6d97e47c; /* Color de fondo gris claro para la sección del formulario */
+            display: flex;
+            justify-content: center; /* Centra horizontalmente */
+            align-items: center; /* Centra verticalmente */
+            min-height: 100px; /* Altura mínima para asegurar el centrado */
+            margin-bottom: 5px;
+            
+        }
+        form {
+            display: flex;
+            max-width: 600px; 
+            /*justify-content: center;*/
+            flex-direction: column;
+            margin-top: 0; /* Elimina el margen superior */
+            padding-top: 0; /* Elimina el padding superior */
+            align-self: center;
+        }
+        label {
+            font-weight: bold;
+            margin-top: 0;
+            color: white;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 12px;
+            box-sizing: border-box; /* Asegura que el padding y borde no afecten el ancho */
+        }
+        /* Cambiar color de fondo del campo "Empresa Solicitante" */
+        #empresa_solicitante {
+            background-color: #f0f0f0; /* Gris clarito */
+        }
+        button {
+            padding: 10px;
+            background-color: #005883;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #003d5c;
+        }
+
+        /* Pie de página */
+        .footer {
+            margin-top: 20px;
+            padding: 15px 0;
+            background-color: #e2e9f3;
+            font-size: 12px;
+            color: #999999;
+            line-height: 1.4;
+            text-align: center;
+            max-height: 65px; /* Altura máxima para evitar desbordamiento */
+            margin-bottom: 20px;
+        }
+        .footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilos para la vista previa de impresión */
+        .print-container {
+            margin-top: 20px;
+        }
+        .print-header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .print-header img {
+            max-height: 10px;
+            max-width: 40%; /* Asegura que la imagen no exceda el ancho del contenedor */
+            margin-bottom: 10px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .print-header h1 {
+            font-size: 18px; /* Encabezado en 18px */
+            color: #005883;
+            margin: 0;
+        }
+        .print-table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: auto; /* Ajuste automático del ancho de las columnas */
+        }
+        .print-table th, .print-table td {
+            border: 1px solid #ddd;
+            padding: 10px; /* Espaciado moderado */
+            text-align: left;
+            font-size: 12px; /* Celdas en 12px */
+            line-height: 1.4; /* Interlineado adecuado */
+            white-space: normal; /* Permite que el texto se ajuste dentro de la celda */
+            word-wrap: break-word; /* Rompe palabras largas si es necesario */
+            vertical-align: top; /* Alinea el texto hacia arriba */
+        }
+        .print-table th {
+            background-color: #005883;
+            color: white;
+            font-size: 14px; /* Encabezados de tabla en 14px */
+        }
+        /* Pie de página en la versión impresa */
+        .print-footer {
+            margin-top: 20px;
+            padding: 15px 0;
+            background-color: #f4f4f4;
+            font-size: 12px;
+            color: #999999;
+            line-height: 1.4;
+            text-align: center;
+        }
+        .print-footer a {
+            color: #0073e6;
+            text-decoration: none;
+        }
+        .print-footer a:hover {
+            text-decoration: underline;
+        }
+        /* Botón de impresión en la nueva ventana */
+        .print-button {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .print-button button {
+            padding: 10px 20px;
+            background-color: #005883;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .print-button button:hover {
+            background-color: #003d5c;
+        }
+        /* Estilos para el contenedor principal de elementos en línea */
+        .contenedor-inline {
+            display: flex;
+            gap: 5px; /* Espacio entre los elementos internos */
+            margin-top: 5px; /* Margen superior */
+        }
+
+        /* Estilos para los elementos flexibles dentro del contenedor */
+        .elemento-flexible {
+            flex: 1; /* Permite que los elementos crezcan y se encojan proporcionalmente */
+        }
+
+        /* Estilo para el elemento flexible con ancho máximo */
+        .elemento-ancho-maximo {
+            max-width: 280px; /* Ancho máximo específico */
+        }
+
+        /* Estilo para el elemento flexible que ocupa el 50% del ancho */
+        .elemento-mitad-ancho {
+            flex: 1;
+            max-width: 50%; /* Ancho máximo del 50% */
+        }
+
+        /* Estilo para inputs, selects y textareas que ocupan todo el ancho de su contenedor */
+        .campo-ancho-completo {
+            width: 100%;
+        }
+        .contenedor-multiple-option {
+            display: inline-block; /* Permite que cada grupo de opciones fluya en el documento */
+            width: 100%; /* Evita desbordamientos */
+            text-align: left; /* Asegura alineación a la izquierda */
+        }
+
+       .radio-label {
+            display: flex;
+            align-items: center; /* Mantiene el botón y el texto alineados verticalmente */
+            justify-content: flex-start; /* Asegura que todo esté alineado a la izquierda */
+            gap: 4px; /* Reduce el espacio entre el botón radio y el texto */
+            width: fit-content; /* Ajusta el ancho al contenido en lugar de expandirlo */
+            white-space: nowrap; /* Evita saltos de línea innecesarios */
+        }
+
+        .radio-label input {
+            margin: 0; /* Asegura que el radio no tenga márgenes innecesarios */
+        }
+        .multiopt-label {
+            display: flex;
+            align-items: center; /* Mantiene el botón y el texto alineados verticalmente */
+            justify-content: flex-start; /* Asegura que todo esté alineado a la izquierda */
+            gap: 4px; /* Reduce el espacio entre el botón radio y el texto */
+            width: fit-content; /* Ajusta el ancho al contenido en lugar de expandirlo */
+            white-space: nowrap; /* Evita saltos de línea innecesarios */
+        }
+
+        .multiopt-label input {
+            margin: 0; /* Asegura que el radio no tenga márgenes innecesarios */
+        }
+        /* Estilos para el PDF */
+
+        /* Estilos para la vista previa de impresión */
+        @media print {
+            .print-button {
+                display: none; /* Ocultar el botón en la versión impresa */
+            }
+            /* Evitar que el contenido se desborde */
+            body {
+                margin: 0;
+                padding: 0;
+                overflow: visible;
+            }
+            .print-table {
+                page-break-inside: avoid; /* Evita que la tabla se divida entre páginas */
+            }
+            .print-footer {
+                page-break-inside: avoid; /* Evita que el pie de página se divida */
+            }
+            .pdf-container {
+                page-break-before: always; /* Forzar nueva página para el PDF */
+            }
+        }
+    </style>  
+</head>
+<body>
+    <div class="container">
+                
+        <!-- Banner corporativo -->
+        <!-- RegistroClientesV12Qw version 11 -->
+        <div class="banner">
+            <img src="https://i.imgur.com/1PGITw8.png" alt="Banner Corporativo">
+        </div>
+    </div>
+
+    <!-- Título del formulario -->
+    <h1>Verificación Previa a la Homologación</h1>
+    <h2>Información del Usuario:</h2>      
+        
+    <div class="formsection">
+        <!-- Formulario de Verificación -->
+        <form name="Verificación Previa a la Homologación" action="#" method="post">
+            <!-- Información básica -->
+            <label for="empresa_solicitante">Nombre/Razón Social:</label>
+            <input type="text" id="empresa_solicitante" name="empresa_solicitante" placeholder="Ingrese el nombre de la empresa" required>
+
+            <!-- Contenedor para No. R.I.F., Tipo de Contribuyente, Fecha de Constitución y Zona/Estado -->
+            <div class="contenedor-inline">
+                <div class="elemento-flexible elemento-ancho-maximo">
+                        <label for="No. R.I.F.">No. R.I.F.:</label>
+                        <input type="text" id="No. R.I.F." name="No. R.I.F." placeholder="J0123456789" required class="campo-ancho-completo">
+                    </div>
+                <div class="elemento-flexible elemento-ancho-maximo">
+                    <label for="tipo_contribuyente">Tipo de Contribuyente:</label>
+                    <select id="tipo_contribuyente" name="tipo_contribuyente" required class="campo-ancho-completo">
+                        <option value="" disabled selected>Seleccione</option>
+                        <option>Ordinario</option>
+                        <option>Especial</option>
+                        <option>No Contribuyente</option>
+                    </select>
+                </div>
+                <div class="elemento-flexible elemento-ancho-maximo">
+                    <label for="fecha_verificacion">Fecha de la Verificación:</label>
+                    <input type="date" id="fecha_verificacion" name="fecha_verificacion" required class="campo-ancho-completo">
+                </div>
+            <div class="elemento-flexible elemento-ancho-maximo">
+                <label for="zona">Zona/Estado:</label>
+                <select id="zona" name="zona" requiredclass="campo-ancho-completo">
+                    <option value="" disabled selected>Seleccione una opción</option>
+                    <option>Amazonas</option>
+                    <option>Anzoátegui</option>
+                    <option>Apure</option>
+                    <option>Aragua</option>
+                    <option>Barinas</option>
+                    <option>Bolívar</option>
+                    <option>Carabobo</option>
+                    <option>Cojedes</option>
+                    <option>Delta Amacuro</option>
+                    <option>Distrito Capital</option>
+                    <option>Falcón</option>
+                    <option>Guárico</option>
+                    <option>Lara</option>
+                    <option>Mérida</option>
+                    <option>Miranda</option>
+                    <option>Monagas</option>
+                    <option>Nueva Esparta</option>
+                    <option>Portuguesa</option>
+                    <option>Sucre</option>
+                    <option>Táchira</option>
+                    <option>Trujillo</option>
+                    <option>Vargas</option>
+                    <option>Yaracuy</option>
+                    <option>Zulia</option>
+                    <option>Dependencias Federales</option>
+                </select>
+            </div>
+        </div>
+        <!-- Contenedor para Dirección Fiscal y Dirección de Atención -->
+        <div class="contenedor-inline">
+            <div class="elemento-flexible elemento-mitad-ancho">
+                <label for="direccion_fiscal">Dirección Fiscal:</label>
+                <textarea id="direccion_fiscal" name="direccion_fiscal" rows="3" placeholder="Ingrese la dirección fiscal" required class="campo-ancho-completo"></textarea>
+            </div>
+            <div class="elemento-flexible elemento-mitad-ancho">
+                <label for="direccion_atencion">Dirección de Atención:</label>
+                <textarea id="direccion_atencion" name="direccion_atencion" rows="3" placeholder="Ingrese la dirección de atención" required class="campo-ancho-completo"></textarea>
+            </div>
+        </div>
+
+        <!-- Contenedor para Representante Legal y Correo Electrónico -->
+        <div class="contenedor-inline">
+            <div class="elemento-flexible">
+                <label for="representante_legal">Representante Legal:</label>
+                <input type="text" id="representante_legal" name="representante_legal" placeholder="Nombre completo del representante legal" required class="campo-ancho-completo">
+            </div>
+            <div class="elemento-flexible">
+                <label for="correo_electronico">Correo electrónico:</label>
+                <input type="email" id="correo_electronico" name="correo_electronico" placeholder="Ejemplo: ejemplo@dominio.com" required class="campo-ancho-completo">
+            </div>
+        </div>
+
+        <!-- Contenedor para Teléfono Cliente y Móvil Cliente -->
+        <div class="contenedor-inline">
+            <div class="elemento-flexible">
+                <label for="telefono_cliente">Teléfono Cliente:</label>
+                <input type="text" id="telefono_cliente" name="telefono_cliente" placeholder="Ejemplo: (0212) 123-4567" required class="campo-ancho-completo">
+            </div>
+            <div class="elemento-flexible">
+                <label for="movil_cliente">Móvil Cliente:</label>
+                <input type="text" id="movil_cliente" name="movil_cliente" placeholder="Ejemplo: 0412-1234567" required class="campo-ancho-completo">
+            </div>
+        </div>
+
+        <!-- Contenedor para Persona Contacto y Teléfono Contacto -->
+        <div class="contenedor-inline">
+            <div class="elemento-flexible">
+                <label for="persona_contacto">Persona Contacto:</label>
+                <input type="text" id="persona_contacto" name="persona_contacto" placeholder="Nombre completo de la persona contacto" required class="campo-ancho-completo">
+            </div>
+            <div class="elemento-flexible">
+                <label for="telefono_contacto">Teléfono Contacto:</label>
+                <input type="text" id="telefono_contacto" name="telefono_contacto" placeholder="Ejemplo: (0212) 123-4567" required class="campo-ancho-completo">
+            </div>
+        </div>
+    
+        <!-- Información Actividad Económica -->
+        <label for="Actividad_Economica">Actividad Económica:</label>
+        <input type="text" id="Actividad_Economica" name="Actividad_Economica" placeholder="Describa la Actividad Económica de la Empresa" required>
+
+        <h2>Información del Distribuidor Autorizado a2:</h2>
+        
+        <!-- Contenedor para Datos del Distribuidor a2 -->
+            <div class="contenedor-inline">
+                <div class="elemento-flexible">
+                    <label for="distribuidor_a2">Distribuidor Autorizado a2:</label>
+                    <input type="text" id="distribuidor_a2" name="distribuidor_a2" placeholder="Nombre del Distribuidor Autorizado a2" required class="campo-ancho-completo">
+                </div>
+                <div class="elemento-flexible">
+                    <label for="codigo_distribuidor">Código de Distribuidor a2:</label>
+                    <input type="codigo_distribuidor" id="codigo_distribuidor" name="codigo_distribuidor" placeholder="Codigo del Distribuidor Autorizado a2" required class="campo-ancho-completo">
+                </div>                        
+            </div>
+            <div class="elemento-flexible">
+                <label>Productos a Instalar/Actualizar:</label>
+
+                <!-- Checkbox múltiples -->
+                <!-- <div style="display: flex; flex-direction: column; gap: 8px;"> -->
+                <div class="contenedor-multiple-option">
+                    <label class="multiopt-label">
+                        <input type="checkbox" name="productos_a2" value="a2 Administrativo Basico y Pto de Ventas">
+                        <span>a2 Administrativo Basico y Pto de Ventas</span>
+                    </label>
+                    <br>
+                    <label class="multiopt-label">
+                        <input type="checkbox" name="productos_a2" value="a2 Herramienta Administrativa Configurable">
+                        <span>a2 Herramienta Administrativa Configurable</span>
+                    </label>
+                    <br>               
+                    <label class="multiopt-label">
+                        <input type="checkbox" name="productos_a2" value="a2 Aliemntos y Bebidas + 2 Puntos de Ventas (1 Caja + 1 Toma de Comanda)">
+                        <span>a2 Aliemntos y Bebidas + 2 Puntos de Ventas (1 Caja + 1 Toma de Comanda)</span>
+                    </label>
+                    <br>
+                    <label class="multiopt-label">
+                        <input type="checkbox" name="productos_a2" value="a2 Punto de Ventas Configurable">
+                        <span>a2 Punto de Ventas Configurable</span>
+                    </label>
+                    <br>
+                    <label class="multiopt-label">
+                        <input type="checkbox" name="productos_a2" value="a2 Punto de Ventas Configurable Alimentos y Bebidas">
+                        <span>a2 Punto de Ventas Configurable Alimentos y Bebidas</span>
+                    </label>
+                    <br>
+                    <label class="multiopt-label">
+                        <input type="checkbox" name="productos_a2" value="a2 Restaurante">
+                        <span>a2 Restaurante</span>
+                    </label>
+                    <br>
+                    <label class="multiopt-label">
+                        <input type="checkbox" name="productos_a2" value="a2 Suite Alimentos y Bebidas">
+                        <span>a2 Suite Alimentos y Bebidas</span>
+                    </label>
+                    <br>
+                    <label class="multiopt-label">
+                        <input type="checkbox" name="productos_a2" value="a2 Otros">
+                        <span>a2 Otros</span>
+
+                    </label>
+                    
+                </div>
+            </div>
+            <div class="contenedor-inline">
+                <div class="elemento-flexible">
+                    <label for="version_producto">Versión del Producto:</label>
+                    <input type="version_producto" id="version_producto" name="version_producto" placeholder="Version a Instalar/Actualoizar" required class="campo-ancho-completo"> 
+                </div>
+                <div class="elemento-flexible">
+                    <label for="seriales_productos">Serial(es) del(los) Productos:</label>
+                    <input type="seriales_productos" id="seriales_productos" name="seriales_productos" placeholder="Serial(es) de el(los) productos a Instalar/Actualoizar" required class="campo-ancho-completo"> 
+                </div>
+            </div>
+
+            <div class="contenedor-inline">
+                    <div class="elemento-flexible">
+                        <label for="metodo_facturacion">Metodo de facturación utilizado</label>
+                        <select id="metodo_facturacion" name="metodo_facturacion" required class="campo-ancho-completo">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option>FORMA LIBRE</option>
+                            <option>IMPRESORA FISCAL</option>
+                            <option>IMPRENTA DIGITAL</option>
+                            <option>IMPRESORA FISCAL - IMPRENTA DIGITAL</option>
+                        </select>
+                    </div>
+                    <div class="elemento-flexible">
+                        <label for="serial_impfiscal">Seriales de las impresoras fiscales</label>
+                        <input type="serial_impfiscal" id="serial_impfiscal" name="serial_impfiscal" placeholder="Seriales de las impresoras fiscales" required class="campo-ancho-completo"> 
+                    </div>
+                </div>
+            
+            <h2>Verificación de Licencias Existentes:</h2>
+            <div class="elemento-flexible">
+                    <br>
+                    <label for="licencias_existentes">¿El usuario tiene otras aplicaciones de software administrativo instaladas?</label>
+                    <span></span>
+                    <div class="contenedor-multiple-option">
+
+                    <label class="radio-label">
+                        <input type="radio" name="otras_apps" value="Si Tiene otras Aplicaciones">
+                        <span>SI</span>
+                        
+                    </label>
+                    <br>
+                    <label class="radio-label">
+                        <input type="radio" name="otras_apps" value="No Tiene otras Aplicaciones">
+                        <span>NO.</span>
+                        
+                    </label>
+            </div>      
+            
+                <div class="elemento-flexible">
+                    <label for="otras_apps_detalles">Detalles:</label>
+                        <textarea id="otras_apps_detalles" name="otras_apps_detalles" rows="3" placeholder="Si la repuesta es Si, especifique"  class="campo-ancho-completo"></textarea>
+                </div>
+            </div>
+            
+            <p style="color: white;">Si la respuesta es "Sí", complete la siguiente tabla:</p>
+                <table>
+                    <thead>
+                        <tr style="color: white;">
+                            <th id="marca_col">Marca del Software</th>
+                            <th id="nombre_col">Nombre del Software</th>
+                            <th id="licencia_col">¿Licencia Personalizada? (Sí/No)</th>
+                            <th id="empresa_col">¿A nombre de la misma empresa? (Sí/No)</th>
+                            <th id="observaciones_col">Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody style="color: white;">
+                        <tr>
+                            <td><input type="text" name="marca_software_1" aria-labelledby="marca_col"></td>
+                            <td><input type="text" name="nombre_software_1" aria-labelledby="nombre_col"></td>
+                            <td><input type="text" name="licencia_personalizada_1" aria-labelledby="licencia_col"></td>
+                            <td><input type="text" name="misma_empresa_1" aria-labelledby="empresa_col"></td>
+                            <td><input type="text" name="observaciones_1" aria-labelledby="observaciones_col"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="marca_software_2" aria-labelledby="marca_col"></td>
+                            <td><input type="text" name="nombre_software_2" aria-labelledby="nombre_col"></td>
+                            <td><input type="text" name="licencia_personalizada_2" aria-labelledby="licencia_col"></td>
+                            <td><input type="text" name="misma_empresa_2" aria-labelledby="empresa_col"></td>
+                            <td><input type="text" name="observaciones_2" aria-labelledby="observaciones_col"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="marca_software_3" aria-labelledby="marca_col"></td>
+                            <td><input type="text" name="nombre_software_3" aria-labelledby="nombre_col"></td>
+                            <td><input type="text" name="licencia_personalizada_3" aria-labelledby="licencia_col"></td>
+                            <td><input type="text" name="misma_empresa_3" aria-labelledby="empresa_col"></td>
+                            <td><input type="text" name="observaciones_3" aria-labelledby="observaciones_col"></td>
+                        </tr>
+                        <tr>
+                            <td><input type="text" name="marca_software_4" aria-labelledby="marca_col"></td>
+                            <td><input type="text" name="nombre_software_4" aria-labelledby="nombre_col"></td>
+                            <td><input type="text" name="licencia_personalizada_4" aria-labelledby="licencia_col"></td>
+                            <td><input type="text" name="misma_empresa_4" aria-labelledby="empresa_col"></td>
+                            <td><input type="text" name="observaciones_4" aria-labelledby="observaciones_col"></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            <h2>Información notificada al Cliente/Usuario:</h2>
+                <!-- Contenedor la información que se le debe dar al usuario -->
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible">
+                        <label for="informa_restriccion_users">¿Se informó al usuario sobre la restricción de tener dos licencias simultáneas? </label>
+                        <select id="informa_restriccion_users" name="informa_restriccion_users" required class="campo-ancho-completo">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option>SI</option>
+                            <option>NO</option>
+                        </select>
+                    </div>
+                    <div class="elemento-flexible">
+                        <label for="informa_solo_homologados">¿Se explicó al usuario que solo puede usar la licencia homologada? </label>
+                        <select id="informa_solo_homologados" name="informa_solo_homologados" required class="campo-ancho-completo">
+                            <option value="" disabled selected>Seleccione</option>
+                            <option>SI</option>
+                            <option>NO</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="contenedor-inline">
+                    <div class="elemento-flexible">
+                        <label for="observaciones_adicionales">Observaciones adicionales sobre la información proporcionada al usuario:</label>
+                        <textarea id="observaciones_adicionales" name="observaciones_adicionales" rows="4" placeholder="Observaciones adicionales"></textarea>
+                    </div>                         
+                </div>
+                <h2>Resultado de la Verificación:</h2>
+                
+                <div class="contenedor-multiple-option">
+
+                    <label class="radio-label">
+                        <input type="radio" name="verificacion" value="Cumple con Providencia SNAT/2024/000121">
+                        <span>Cumple con los requisitos de la Providencia SNAT/2024/000121.</span>
+                        
+                    </label>
+                    <br>
+                    <label class="radio-label">
+                        <input type="radio" name="verificacion" value="No cumple con Providencia SNAT/2024/000121">
+                        <span>No cumple con los requisitos de la Providencia SNAT/2024/000121.</span>
+                        
+                    </label>
+                </div>
+                <h2>Acciones a Seguir (Si no cumple):</h2>
+                
+                <div class="contenedor-multiple-option">
+
+                    <label class="radio-label">
+                        <input type="radio" name="accionsiguiente" value="cumple">
+                        <span>Instalación/Actualización del software A2 Softway NO realizada.</span>
+                        
+                    </label>
+                    <br>
+                    <label class="radio-label">
+                        <input type="radio" name="accionsiguiente" value="no_cumple">
+                        <span>Notificación a A2 Softway realizada (Fecha: ____________).</span>
+                        
+                    </label>
+                </div>                    
+                <h2>Generar Documentos</h2>
+                <!-- Botón para abrir la vista previa de impresión -->
+                <button type="submit" id="imprimir-btn" class="no-print">Generar Documento</button>
+                </div>
+                <!-- Pie de página del formulario -->
+                <div class="footer no-print">
+                    &copy; 2025 Arksoft Integradores de Sistemas, C.A. Todos los derechos reservados.<br>
+                    frm_verificacion_previa_v0108<br>
+                    Para más información, contáctenos en: 
+                    <a href="mailto:arksoft.sistemas@gmail.com">arksoft.sistemas@gmail.com</a>
+                </div> 
+                
+        </form>
+    </div>
+    
+
+    <script>
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault(); // Evita que el formulario se envíe
+
+            // Obtener valores del formulario
+            const empresa = document.getElementById("empresa_solicitante").value;
+            const rif = document.getElementById("No. R.I.F.").value;
+            const tipoContribuyente = document.getElementById("tipo_contribuyente").value;
+            const fechaInput = document.getElementById("fecha_verificacion").value;
+            const zona = document.getElementById("zona").value;
+            const direccionFiscal = document.getElementById("direccion_fiscal").value;
+            const direccionAtencion = document.getElementById("direccion_atencion").value;
+            const representanteLegal = document.getElementById("representante_legal").value;
+            const correoElectronico = document.getElementById("correo_electronico").value;
+            const telefonoCliente = document.getElementById("telefono_cliente").value;
+            const movilCliente = document.getElementById("movil_cliente").value;
+            const personaContacto = document.getElementById("persona_contacto").value;
+            const telefonoContacto = document.getElementById("telefono_contacto").value;
+            const actividadEconomica = document.getElementById("Actividad_Economica").value;
+
+            // Datos del Distribuidor Autorizado a2
+            const distribuidor_a2 = document.getElementById("distribuidor_a2")?.value || '';
+            const codigoDistribuidor = document.getElementById("codigo_distribuidor")?.value || '';
+            //const productoA2 = document.getElementById("productos_a2")?.value || '';
+            //const productoA2 = document.querySelector('input[name="productos_a2"]:checked')?.value || 'No especificado';
+            // Obtener productos seleccionados
+            const productosSeleccionados = Array.from(document.querySelectorAll('input[name="productos_a2"]:checked'))
+                .map(cb => cb.value);
+
+            const productoA2 = productosSeleccionados.length > 0 
+                ? productosSeleccionados.join(', ') 
+                : 'No especificado';
+
+            const versionProducto = document.getElementById("version_producto")?.value || '';
+            const serialesProductos = document.getElementById("seriales_productos")?.value || '';
+
+            // Metodo de Facturacion y seriales de Impresoras fiscales
+            const metodofacturacion = document.getElementById("metodo_facturacion")?.value || '';
+            const serialesimpfiscal = document.getElementById("serial_impfiscal")?.value || '';
+
+            // Verificación de Licencias Existentes
+            const tieneOtrasApps = document.querySelector('input[name="otras_apps"]:checked')?.value || 'No especificado';
+            const detallesOtrasApps = document.getElementById("otras_apps_detalles")?.value || '';
+
+            // Información al usuario
+            const informaRestricciones = document.getElementById("informa_restriccion_users")?.value || '';
+            const informaSoloHomologados = document.getElementById("informa_solo_homologados")?.value || '';
+            const observacionesAdicionales = document.getElementById("observaciones_adicionales")?.value || '';
+
+            // Resultado de la verificación
+            const resultadoVerificacion = document.querySelector('input[name="verificacion"]:checked')?.value || 'No especificado';
+            const accionSiNoCumple = document.querySelector('input[name="accionsiguiente"]:checked')?.value || 'No especificado';
+
+            // Obtener datos de la tabla de licencias existentes
+            const filasLicencias = [];
+            const tablaLicencias = document.querySelectorAll('table tbody tr');
+            tablaLicencias.forEach((tr) => {
+                const celdas = tr.querySelectorAll('input');
+                if (celdas.length === 5) {
+                    filasLicencias.push({
+                        marca_software: celdas[0].value,
+                        nombre_software: celdas[1].value,
+                        licencia_personalizada: celdas[2].value,
+                        misma_empresa: celdas[3].value,
+                        observaciones: celdas[4].value
+                    });
+                }
+            });
+
+            // Generar HTML para la tabla de licencias
+            let tablaLicenciasHTML = '';
+            if (filasLicencias.length > 0) {
+                tablaLicenciasHTML = `
+                <h2 style="color:#005883; border-bottom: none; padding-bottom: 5px; font-size: 12px; margin-top: 15px; margin-bottom: 5px;">Licencias Existentes</h2>
+                <table style="width: 100%; border-collapse: collapse; font-size: 9pt; margin-top: 10px;" border="0" cellpadding="0" cellspacing="0">
+                    <thead>
+                        <tr style="background-color: #005883; color: white;">
+                            <th style="padding: 4px; width: 20%;">Marca del Software</th>
+                            <th style="padding: 4px; width: 20%;">Nombre del Software</th>
+                            <th style="padding: 4px; width: 20%;">Licencia Personalizada</th>
+                            <th style="padding: 4px; width: 20%;">A nombre de la empresa</th>
+                            <th style="padding: 4px; width: 20%;">Observaciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>`;
+                    filasLicencias.forEach(fila => {
+                    tablaLicenciasHTML += `
+                        <tr style="height: 10px;">
+                            <td style="padding: 2px 4px; border: none;">${fila.marca_software || 'No Aplica'}</td>
+                            <td style="padding: 2px 4px; border: none;">${fila.nombre_software || 'No Aplica'}</td>
+                            <td style="padding: 2px 4px; border: none;">${fila.licencia_personalizada || 'No Aplica'}</td>
+                            <td style="padding: 2px 4px; border: none;">${fila.misma_empresa || 'No Aplica'}</td>
+                            <td style="padding: 2px 4px; border: none;">${fila.observaciones || 'No Aplica'}</td>
+                        </tr>`;
+                    });
+                    tablaLicenciasHTML += `
+                </tbody>
+                </table>`;
+            }
+
+            // Formatear la fecha como dd/MM/aaaa
+            const fechaFormateada = new Date(fechaInput).toLocaleDateString('es-ES', {
+                day: '2-digit',
+                month: '2-digit',
+                year: 'numeric'
+            });
+
+            // Fecha y hora actual
+            const now = new Date();
+            const fechaHora = now.toLocaleString('es-ES', {
+                dateStyle: 'full',
+                timeStyle: 'short'
+            });
+
+            // Folio único
+            const folio = Math.floor(Math.random() * 900000) + 100000;
+
+            // Construir contenido del documento
+            let contenidoDocumento = `
+                <!DOCTYPE html>
+                <html lang="es">
+                <head>
+                    <meta charset="UTF-8">
+                    <title>FORMULARIO DE VERIFICACIÓN PREVIA A LA INSTALACIÓN/ACTUALIZACIÓN DE A2 SOFTWAY</title>
+                    <style>
+                        /* Estilos para el documento generado */
+                        @media print {
+                            @page {
+                                size: Letter;
+                                margin: 1cm 1cm;
+                            }
+                            body {
+                                margin: 0;
+                                padding: 0;
+                                font-size: 11pt;
+                            }
+                            h1 {
+                                text-align: center;
+                                color: #005883;
+                                margin-top: 3px;
+                                margin-bottom: 10px;
+                            }
+                            .content {
+                                margin: 0;
+                                max-width: 100%;
+                            }
+                            table, th, td {
+                                border: none !important;
+                                page-break-inside: avoid;
+                                break-inside: avoid;
+                            }
+                            thead {
+                                display: table-header-group;
+                            }
+                            tfoot {
+                                display: table-footer-group;
+                            }
+                            .firmas-table p {
+                                font-size: 7pt;
+                                margin: 2px 0;
+                                text-align: center;
+                            }
+                            .print-button {
+                                display: none !important;
+                            }
+                        }
+
+                        .content {
+                            max-width: 100%;
+                            margin: 1cm 1cm;
+                            border: none
+                            font-size: 9pt;
+                            line-height: 1.5;
+                        }
+
+                        .content h1 {
+                            text-align: center;
+                            color: #005883;
+                            margin-top: 5px;
+                            margin-bottom: 8px;
+                        }
+
+                        .content p {
+                            text-align: justify;
+                            margin-top: 3px;
+                            margin-bottom: 3px;
+                        }
+
+                        .content ol, .content ul {
+                            margin-left: 20px;
+                            margin-top: 2px;
+                            margin-bottom: 5px;
+                        }
+
+                        .content table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-top: 20px;
+                        }
+
+                        .content table td {
+                            width: 50%;
+                            text-align: left;
+                            vertical-align: top;
+                        }
+
+                        .content table hr {
+                            width: 80%;
+                            margin: 5px auto;
+                            border: 0;
+                            border-top: 1px solid #000;
+                        }
+
+                        .content table p {
+                            font-size: 7pt;
+                            margin: 2px 0;
+                        }
+
+                        .print-button {
+                            text-align: center;
+                            margin-top: 20px;
+                        }
+
+                        .print-button button {
+                            padding: 10px 20px;
+                            background-color: #005883;
+                            color: white;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            font-size: 14px;
+                        }
+
+                        .print-button button:hover {
+                            background-color: #003d5c;
+                        }
+
+                        table {
+                            width: 100%;
+                            border-collapse: collapse;
+                            margin-top: 2px;
+                            font-size: 8pt;
+                            text-align: left;
+                        }
+
+                        table td {
+                            width: 50%;
+                            vertical-align: top;
+                            border: none;
+                            line-height: 1.1; /* Reduce el interlineado */
+                            padding-top: 4px;
+                            padding-bottom: 4px;
+                            padding-left: 4px;
+                            padding-right: 4px;
+                            font-size: 9pt;
+                        }
+
+                        table hr {
+                            width: 80%;
+                            margin: 5px auto;
+                            border: none;
+                            border: 0;
+                            border-top: 1px solid #000;
+                        }
+
+                        table p {
+                            font-size: 9pt;
+                            white-space: nowrap;
+                            margin: 2px 0;
+                            line-height: 1.2;
+                        }
+
+                        h2 {
+                            font-size: 14px;
+                            margin-top: 8px;
+                            margin-bottom: 0;
+                            font-weight: bold;
+                            color: #101111;
+                            text-align: left;
+                            text-decoration: underline;
+                        }
+                        .section-title {
+                            background-color: #005883;
+                            color: white;
+                            padding: 6px 5px;
+                            font-size: 12px;
+                            font-weight: bold;
+                            margin-top: 15px;
+                            margin-bottom: 8px;
+                            border-radius: 4px;
+                        }
+                    </style>
+                </head>
+                <body>
+                    <div class="content">
+                    <!-- Encabezado en tres columnas -->
+                    <table style="width: 100%; border: none; margin-bottom: 15px;">
+                        <tr>
+                            <!-- Logo izquierda -->
+                            <td style="width: 25%; border: none; text-align: center; vertical-align: middle;">
+                                <a href="https://imgur.com/1PGITw8"> 
+                                    <img src="https://i.imgur.com/1PGITw8.png" 
+                                        alt="Logo Izquierda"
+                                        style="max-width: 160px; height: auto;" />
+                                </a>
+                            </td>
+
+                            <!-- Título central -->
+                            <td style="width: 50%; border: none; text-align: center; vertical-align: middle;">
+                                <h1 style="font-size: 10pt; color: #005883; margin: 0;">
+                                    FORMULARIO DE VERIFICACIÓN PREVIA A LA INSTALACIÓN/ACTUALIZACIÓN DE A2 SOFTWAY
+                                </h1>
+                            </td>
+
+                            <!-- Logo derecha -->
+                            <td style="width: 25%; border: none; text-align: center; vertical-align: middle;">
+                                <img src="https://i.imgur.com/pmU3hTa.jpeg" 
+                                    alt="Logo Derecha"
+                                    style="max-width: 80px; height: auto;" />
+                            </td>
+                        </tr>
+                    </table>
+
+                    <!-- Fecha y Folio en dos columnas -->
+                    <table style="width: 100%; border: none; margin-bottom: 20px;">
+                        <tr>
+                            <td style="width: 50%; font-size: 9pt; text-align: left;">
+                                <strong>Fecha y Hora:</strong> ${fechaHora}
+                            </td>
+                            <td style="width: 50%; font-size: 9pt; text-align: right;">
+                                <strong>Folio:</strong> ${folio}
+                            </td>
+                        </tr>
+                    </table>
+
+                        <!-- Tabla principal -->
+                         <h2 class="section-title">Información del Usuario</h2>
+                        <table>
+                            <tr><th>Campo</th><th>Datos</th></tr>
+                            <tr><td><strong>Empresa Solicitante:</strong></td><td>${empresa}</td></tr>
+                            <tr><td><strong>No. R.I.F.:</strong></td><td>${rif}</td></tr>
+                            <tr><td><strong>Tipo de Contribuyente:</strong></td><td>${tipoContribuyente}</td></tr>
+                            <tr><td><strong>Fecha de Verificación:</strong></td><td>${fechaFormateada}</td></tr>
+                            <tr><td><strong>Zona/Estado:</strong></td><td>${zona}</td></tr>
+                            <tr><td><strong>Dirección Fiscal:</strong></td><td>${direccionFiscal}</td></tr>
+                            <tr><td><strong>Dirección de Atención:</strong></td><td>${direccionAtencion}</td></tr>
+                            <tr><td><strong>Representante Legal:</strong></td><td>${representanteLegal}</td></tr>
+                            <tr><td><strong>Correo Electrónico:</strong></td><td>${correoElectronico}</td></tr>
+                            <tr><td><strong>Teléfono Cliente:</strong></td><td>${telefonoCliente}</td></tr>
+                            <tr><td><strong>Móvil Cliente:</strong></td><td>${movilCliente}</td></tr>
+                            <tr><td><strong>Persona Contacto:</strong></td><td>${personaContacto}</td></tr>
+                            <tr><td><strong>Teléfono Contacto:</strong></td><td>${telefonoContacto}</td></tr>
+                            <tr><td><strong>Actividad Económica:</strong></td><td>${actividadEconomica}</td></tr>
+                        </table>
+
+                        <h2 class="section-title">Información del Distribuidor de Software</h2>
+                        <table>
+                            <tr><td><strong>Distribuidor Autorizado a2:</strong></td><td>${distribuidor_a2}</td></tr>
+                            <tr><td><strong>Código de Distribuidor a2:</strong></td><td>${codigoDistribuidor}</td></tr>
+                            <tr><td><strong>Producto/s a Instalar/Actualizar:</strong></td><td>${productoA2}</td></tr>
+                            <tr><td><strong>Versión del Producto:</strong></td><td>${versionProducto}</td></tr>
+                            <tr><td><strong>Serial(es):</strong></td><td>${serialesProductos}</td></tr>
+                            <tr><td><strong>Método de Facturación:</strong></td><td>${metodofacturacion}</td></tr>
+                            <tr><td><strong>Serial(es) de Impresoras Fiscales:</strong></td><td>${serialesimpfiscal}</td></tr>
+                        </table>
+
+                        <h2 class="section-title">Verificación de Licencias Existentes</h2>
+                        <table>
+                            <tr><td><strong>¿Tiene otras aplicaciones?</strong></td><td>${tieneOtrasApps}</td></tr>
+                            <tr><td><strong>Detalles:</strong></td><td>${detallesOtrasApps}</td></tr>
+                        </table>
+
+                        ${tablaLicenciasHTML}
+
+                        <h2 class="section-title">Información notificada al Cliente/Usuario</h2>
+                        <table>
+                            <tr><td><strong>¿Se informó sobre restricciones de uso?</strong></td><td>${informaRestricciones}</td></tr>
+                            <tr><td><strong>¿Se explicó usar solo licencia homologada?</strong></td><td>${informaSoloHomologados}</td></tr>
+                            <tr><td><strong>Observaciones Adicionales:</strong></td><td>${observacionesAdicionales}</td></tr>
+                        </table>
+
+                        <h2 class="section-title">Resultado de la Verificación</h2>
+                        <table>
+                            <tr><td><strong>¿Cumple con la providencia SNAT/2024/000121?</strong></td><td>${resultadoVerificacion}</td></tr>
+                            <tr><td><strong>Acción a seguir si no cumple:</strong></td><td>${accionSiNoCumple}</td></tr>
+                        </table>
+                        <!-- Tabla de firmas -->
+                        <table class="firmas-table" style="width: 100%; margin-top: 50px; border: none;">
+                            <tr>
+                                <td style="text-align: center; width: 50%;">
+                                    <p><strong>${representanteLegal}</strong></p>
+                                    <p>Representante Legal</p>
+                                    <p>(Firma)</p>
+                                </td>
+                                <td style="text-align: center; width: 50%;">
+                                    <p><strong>ARKSOFT INTEGRADORES DE SISTEMAS, C.A.</strong></p>
+                                    <p>JUAN ERNESTO PAEZ MUJICA</p>
+                                    <p>Gerente General</p>
+                                    <p>(Firma)</p>
+                                </td>
+                            </tr>
+                        </table>
+                        <div style="margin-top: 30px; text-align: center; font-size: 8px; color: #999999;">
+                            <strong>Nota:</strong> Este documento fue generado automáticamente.
+                            <br>
+                            &copy; 2025 Arksoft Integradores de Sistemas, C.A.<br>
+                            frm_verificacion_previa_v0108<br>
+                            Para más información, contáctenos en:
+                            <a href="mailto:arksoft.sistemas@gmail.com">arksoft.sistemas@gmail.com</a>
+                        </div>
+                        <!-- Botón de impresión -->
+                        <div class="print-button no-print" style="margin-top: 30px; text-align: center;">
+                            <button onclick="window.print()" style="padding: 10px 20px; background-color: #005883; color: white; border: none; border-radius: 4px; font-size: 16px;">Imprimir Documento</button>
+                        </div>
+                    </div>
+                </body>
+                </html>
+            `;
+
+            // Abrir nueva ventana e imprimir
+            const ventana = window.open('', '_blank');
+            ventana.document.write(contenidoDocumento);
+            ventana.document.close();
+        });
+    </script>
+</body>
+</html>
