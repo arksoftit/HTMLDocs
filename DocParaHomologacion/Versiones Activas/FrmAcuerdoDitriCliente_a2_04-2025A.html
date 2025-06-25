@@ -265,7 +265,10 @@
                     <option value="A2 HERRAMIENTA ADMINISTRATIVA CONFIGURABLE MODULO DE VENTA (HAC) Versión 13.01.0ALX">A2 HERRAMIENTA ADMINISTRATIVA CONFIGURABLE MODULO DE VENTA (HAC) Versión 13.01.0ALX</option>
                     <option value="A2 ADMINISTRATIVO BASICO MODULO DE VENTAS Versión 10.0.1ALX">A2 ADMINISTRATIVO BASICO MODULO DE VENTAS Versión 10.0.1ALX</option>
                     <option value="A2 PUNTO DE VENTA Versión 10.00.0ALX">A2 PUNTO DE VENTA Versión 10.00.0ALX</option>
+<<<<<<< HEAD
                     <option value="A2 HERRAMIENTA ADMINISTRATIVA CONFIGURABLE MODULO DE VENTA (HAC) Versión 13.01.0ALX + A2 PUNTO DE VENTA Versión 10.00.0ALX">A2 HERRAMIENTA ADMINISTRATIVA CONFIGURABLE MODULO DE VENTA (HAC) Versión 13.01.0ALX + A2 PUNTO DE VENTA Versión 10.00.0ALX</option>
+=======
+>>>>>>> bd59d2e5f5c90459ddb1f6461a27e359e1689495
                 </select>
             </div>
             <!-- Botón de Envío -->
@@ -290,6 +293,7 @@
             const clienteDomicilio = document.getElementById('cliente_domicilio').value;
             const softwareHomologado = document.getElementById('software_homologado').value;
 
+<<<<<<< HEAD
             // --- Modificación aquí ---
             // Dividir la cadena de fecha (yyyy-MM-dd) en sus componentes
             const partesFecha = fechaInput.split('-'); // ["yyyy", "MM", "dd"]
@@ -302,12 +306,19 @@
 
             // Formatear la fecha como dd/MM/aaaa
             const fechaFormateada = fechaSeleccionada.toLocaleDateString('es-ES', {
+=======
+            // Formatear la fecha como dd/MM/aaaa
+            const fechaFormateada = new Date(fechaInput).toLocaleDateString('es-ES', {
+>>>>>>> bd59d2e5f5c90459ddb1f6461a27e359e1689495
                 day: '2-digit',
                 month: '2-digit',
                 year: 'numeric'
             });
+<<<<<<< HEAD
             // --- Fin de la modificación ---
 
+=======
+>>>>>>> bd59d2e5f5c90459ddb1f6461a27e359e1689495
 
             // Crear el contenido del documento
             const contenidoDocumento = `

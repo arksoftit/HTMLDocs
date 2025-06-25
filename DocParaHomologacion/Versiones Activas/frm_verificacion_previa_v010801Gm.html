@@ -640,6 +640,7 @@
                 </table>`;
             }
 
+<<<<<<< HEAD
            // --- Modificación aquí ---
             // Dividir la cadena de fecha (yyyy-MM-dd) en sus componentes
             const partesFecha = fechaInput.split('-'); // ["yyyy", "MM", "dd"]
@@ -652,11 +653,25 @@
 
             // Formatear la fecha como dd/MM/aaaa
             const fechaFormateada = fechaSeleccionada.toLocaleDateString('es-ES', {
+=======
+            // Formatear la fecha como dd/MM/aaaa
+            const fechaFormateada = new Date(fechaInput).toLocaleDateString('es-ES', {
+>>>>>>> bd59d2e5f5c90459ddb1f6461a27e359e1689495
                 day: '2-digit',
                 month: '2-digit',
                 year: 'numeric'
             });
+<<<<<<< HEAD
             // --- Fin de la modificación ---
+=======
+
+            // Fecha y hora actual
+            const now = new Date();
+            const fechaHora = now.toLocaleString('es-ES', {
+                dateStyle: 'full',
+                timeStyle: 'short'
+            });
+>>>>>>> bd59d2e5f5c90459ddb1f6461a27e359e1689495
 
             // Folio único
             const folio = Math.floor(Math.random() * 900000) + 100000;
@@ -912,7 +927,11 @@
                     <table style="width: 100%; border: none; margin-bottom: 20px;">
                         <tr>
                             <td style="width: 50%; font-size: 9pt; text-align: left;">
+<<<<<<< HEAD
                                 <strong>Fecha y Hora:</strong> ${fechaFormateada}
+=======
+                                <strong>Fecha y Hora:</strong> ${fechaHora}
+>>>>>>> bd59d2e5f5c90459ddb1f6461a27e359e1689495
                             </td>
                             <td style="width: 50%; font-size: 9pt; text-align: right;">
                                 <strong>Folio:</strong> ${folio}
