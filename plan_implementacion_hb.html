@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Implementación Avanzado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: auto;
+        }
+        /* Styles for the main content h1 */
+        h1:not(.header-title) {
+            color: #333;
+            font-size: 12pt; /* Kept at 12pt as per previous h1 style */
+            text-align: center;
+        }
+        /* h2 rule is removed as there are no H2 elements in the main content anymore */
+        h3 {
+            color: #333;
+            font-size: 10pt;
+            text-decoration: underline; /* Retained underline */
+            font-weight: bold; /* Retained bold */
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+        }
+        input[type="checkbox"] {
+            margin-right: 10px;
+            margin-top: 4px; /* Adjust vertical alignment of checkbox with text */
+        }
+        label {
+            flex-grow: 1;
+            cursor: pointer;
+        }
+        /* Styles for form groups and inputs */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+        .form-group input[type="date"],
+        .form-group input[type="text"] {
+            width: calc(100% - 22px); /* Account for padding and border */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table style="width: 100%; border: none; margin-top: 0px; margin-bottom: 10px;">
+            <tr>
+                <td style="width: 30%; border: none; text-align: center; vertical-align: middle;">
+                    <a href="https://imgur.com/1PGITw8">
+                        <img src="https://i.imgur.com/1PGITw8.png"
+                             alt="Logo Izquierda"
+                             onerror="this.onerror=null;this.src='https://placehold.co/160xauto/E0E0E0/333333?text=Logo';"
+                             style="max-width: 160px; height: auto;" />
+                    </a>
+                </td>
+
+                <td style="width: 40%; border: none; text-align: center; vertical-align: middle;">
+                    <h1 class="header-title" style="font-size: 20pt; color: #005883; margin: 0;">
+                        PLAN DE IMPLEMENTACION AVANZADO
+                    </h1>
+                </td>
+
+                <td style="width: 30%; border: none; text-align: center; vertical-align: middle;">
+                    <img src="https://i.imgur.com/O0nAwo8.png"
+                         alt="Logo Derecha"
+                         onerror="this.onerror=null;this.src='https://placehold.co/80xauto/E0E0E0/333333?text=Logo';"
+                         style="max-width: 80px; height: auto;" />
+                </td>
+            </tr>
+        </table>
+
+        <h1>HYBRID LITE OS / HYBRIDPOS (ESTIMADO 30 HORAS DE CONSULTORÍA)</h1>
+
+        <div class="form-group">
+            <label for="fecha_sesion">Fecha de Sesión:</label>
+            <input type="date" id="fecha_sesion" name="fecha_sesion" required>
+        </div>
+        <div class="form-group">
+            <label for="cliente">Cliente:</label>
+            <input type="text" id="cliente" name="cliente" required>
+        </div>
+
+        <h3>PROCESO 01: PRELIMINARES, INSTALACIÓN CENTRAL Y CONFIGURACIÓN DE ESTACIONES</h3>
+        <form action="#" method="post">
+            <ul>
+                <li><input type="checkbox" id="item1" name="item1"><label for="item1">Reunión inicial con los usuarios (Administración y Sistemas).</label></li>
+                <li><input type="checkbox" id="item2" name="item2"><label for="item2">Establecimiento de pautas y plan de Instalación, implantación y adiestramiento.</label></li>
+                <li><input type="checkbox" id="item3" name="item3"><label for="item3">Definición de las fechas y horarios.</label></li>
+                <li><input type="checkbox" id="item4" name="item4"><label for="item4">Presentación de usuarios por áreas de trabajo.</label></li>
+                <li><input type="checkbox" id="item5" name="item5"><label for="item5">Levantamiento Inicial básico de información.</label></li>
+                <li><input type="checkbox" id="item6" name="item6"><label for="item6">Revisión del Hardware servidor y estaciones.</label></li>
+                <li><input type="checkbox" id="item7" name="item7"><label for="item7">Consideraciones generales.</label></li>
+                <li><input type="checkbox" id="item8" name="item8"><label for="item8">Establecimiento de Criterios de codificación para el inventario. Preparación</label></li>
+                <li><input type="checkbox" id="item9" name="item9"><label for="item9">Emisión de ficha técnica de información de requerimientos básicos para estaciones y servidor</label></li>
+                <li><input type="checkbox" id="item10" name="item10"><label for="item10">Instalación de HybridLiteOS (Servidor+Estaciones)</label></li>
+                <li><input type="checkbox" id="item11" name="item11"><label for="item11">Instalación de HybridPOS (Estaciones)</label></li>
+                <li><input type="checkbox" id="item12" name="item12"><label for="item12">Configuración inicial básica a nivel del módulo del sistema. (HybridLiteOS / HybridPOS)</label></li>
+                <li><input type="checkbox" id="item13" name="item13"><label for="item13">Instalación del HybridLiteOS / HybridPOS para adiestramiento</label></li>
+                <li><input type="checkbox" id="item14" name="item14"><label for="item14">Parametrización y configuración de ambiente inicial HybridLiteOS / HybridPOS.</label></li>
+                <li><input type="checkbox" id="item15" name="item15"><label for="item15">Configuración de impresoras.</label></li>
+                <li><input type="checkbox" id="item16" name="item16"><label for="item16">Levantamiento Inicial de información áreas Inventario, y demás archivos básicos., Clientes</label></li>
+                <li><input type="checkbox" id="item17" name="item17"><label for="item17">Método codificación a usar para definir Niveles, Clases, Familias, Clientes, Inventarios y demás archivos básicos.</label></li>
+                <li><input type="checkbox" id="item18" name="item18"><label for="item18">Definición código para los productos de inventario. Familias y Nivelas de Inventarios.</label></li>
+                <li><input type="checkbox" id="item19" name="item19"><label for="item19">Definición del código para manejo de los demás archivos básicos.</label></li>
+                <li><input type="checkbox" id="item20" name="item20"><label for="item20">Levantamiento Inicial de información del área tesorería y finanzas.</label></li>
+                <li><input type="checkbox" id="item21" name="item21"><label for="item21">Consideraciones acerca de Roles y permisos o políticas de usuarios y supervisores.</label></li>
+            </ul>
+        </form>
+
+        <h3>PROCESO 02: INTRODUCCIÓN GENERAL.</h3>
+        <form action="#" method="post">
+            <ul>
+                <li><input type="checkbox" id="item22" name="item22"><label for="item22">Teclas de función para manejo del software. (Calculadora, Usuarios, Moneda, etc.)</label></li>
+                <li><input type="checkbox" id="item23" name="item23"><label for="item23">Definiciones básicas. Creación y/o revisión, configuración General inicial</label></li>
+                <li><input type="checkbox" id="item24" name="item24"><label for="item24">Carga de datos básico de la Empresa (Código, Nombre, Dirección, Telf., Rif, etc.)</label></li>
+                <li><input type="checkbox" id="item25" name="item25"><label for="item25">Introducción uso del modulo Configuración General.</label></li>
+                <li><input type="checkbox" id="item26" name="item26"><label for="item26">Definición del flujo administrativo básico de la Empresa.</label></li>
+                <li><input type="checkbox" id="item27" name="item27"><label for="item27">Adiestramiento básico para la creación de niveles y sub niveles, su utilización en los filtros de las operaciones.</label></li>
+                <li><input type="checkbox" id="item28" name="item28"><label for="item28">Adiestramiento básico para la creación de Clases y su utilización en los filtros de las operaciones.</label></li>
+                <li><input type="checkbox" id="item29" name="item29"><label for="item29">Adiestramiento básico para la creación de Marcas y su utilización en los filtros de las operaciones.</label></li>
+            </ul>
+            <button type="submit">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
